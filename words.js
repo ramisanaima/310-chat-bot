@@ -14,7 +14,7 @@ const prompts = [
     //4
     ["happy with", "satisfied with", "pleased with", "works well", "loved it"], //likes product, (high sentiment) ([0,4] requires happy with product track)
     //5
-    ["told my", "gave it to", "recommended to"] //referred product ([0,5] requires happy with product track)
+    ["told my", "gave it to", "recommended to"], //referred product ([0,5] requires happy with product track)
     //6
     ["want more", "premium", "I want to become a premium customer", "subscribe"], //Wants to become a premium customer ([0,6] requires premium track)
     //7
@@ -102,12 +102,12 @@ const replies = [
 
 const goodProductTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
+    ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const goodProductTrackReplies = [
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
+    ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const premiumTrack = [
