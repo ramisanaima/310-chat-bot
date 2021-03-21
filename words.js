@@ -3,47 +3,40 @@ This class stores all the possible word cases within the string and stores a res
 It uses 2D arrays to store the data that the bot will sort through in order to find the proper case.
 */ 
 const prompts = [
+    //0
+    ["im good", "im fine", "im great", "im decent", "im ok", "I am good", "I am fine", "I am great", "I am decent", "I am ok"], //Feeling Good
     //1
-    ["im good", "im fine", "im great", "im decent", "im ok"], //Feeling Good
+    ["im feeling bad", "im terrible", "im awful", "I am not ok", "I am bad", "I am terrible", "I am not great", "I am feeling awful"],  //Feeling bad
     //2
-    ["im feeling bad", "im terrible", "im awful"],  //Feeling bad
+    ["my name is", "im called", "call me"],//name (Name recognition needed)
     //3
-    ["my name", "im called", "call me"],//cannot expect prompt (name)
+    ["my order","order number"],//order number
     //4
-    ["my order","order number"],//cannot expect prompt (order number)
+    ["happy with", "satisfied with", "pleased with", "works well", "loved it"], //likes product, (high sentiment)
     //5
-    ["happy with", "satisfied with", "pleased with", "works"],
+    ["told my", "gave it to"] //referred product
     //6
-    ["sign up", "yes", "become premium customer","subscribe"],
+    ["want more", "premium", "I want to become a premium customer", "subscribe"], //Wants to become a premium customer ([0,6] requires premium track)
     //7
-    ["no thank you", "not now"],
+    ["I don't want to be a premium customer", "unsubscribe", "cancel subscription"], //Cancel premium customer
     //8
-    ["do not understand", "not working", "need repairs", "damaged", "does not work", "broken"],  //6
+    ["not working", "need repairs", "damaged", "does not work", "broken"],  //broken product ([0,8] requires bad product track)
     //9
-    ["hate", "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied",], //7 Unhappy
+    ["hate", "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied",], //Unhappy ([0,9] requires bad product track)
     //10
-    ["replace", "exchange"], //replace
+    ["replace", "exchange"], //replace ([0,10] requires replacement track])
     //11
-    ["refund", "money back","reimburse"],  //refund
+    ["refund", "money back","reimburse"],  //refund ([0,11] requires refund track)
     //12
-    [ "executive", "contact", "call", "chat"], // talk to an executive
+    ["call executive", "contact executive", "chat with an executive", "talk with a person",], // talk to an executive track ([0,12] requires talk to other track])
     //13
-    ["help", "help me", "assistance", "assist"], //help go to 15
+    ["do not understand", "confused", "assistance", "assist", "not sure how"], //confused about product ([0,13] requires talk to other track])
     //14
-    ["another product","another order","different product","different order"],
+    ["another product","another order","different product","different order", "something else"], //other product, back to main
     //15
-    ["rate",'rating', 'feedback','report'],
+    ["rate",'rating', 'feedback','report', "thanks for your help", "all done", "no more help needed", "finished talking"], //done talking ([0,15] requires rating track])
     //16
-    ["0", "1", "2", "3"], // bad rating
-    //17
-    ["yes", "file complaint", "complaint"], //file a complaint
-    //18
-    ["no", "its okay"],
-    //19
-    ["4", "5", "6"], // average rating
-    //20
-    ["7", "8", "9", "10"] // good rating
-
+    ["yes", "file complaint", "complaint"], //file a complaint ([0,16] requires complaint track])
 ]
 
 
@@ -82,18 +75,97 @@ const replies = [
     ["We would love to hear your thoughts! Rate your experience with us today from 0 to 10!"],
     //16
     ["We're so sorry, would you like to file a complaint?"], //bad rating
+    //17
     ["Here's the form to file a complaint. We apologize for the inconvenience, thank you for using our services."], //if yes file a complaint, pretend user fills form
+    //18
     ["We apologize for the inconvenience, thank you for using our services."], //bad rating after yes or no file complaint END
+    //19
     ["Thank you for sharing your feedback. Hope you have a better experience next time!"],  //10 Unhappy
+    //20
     ["Thank you for the feedback. Hope we can always serve you well!"],  //14 END
-     // 15 help   go to replace refund or talk to an executive if mention
+    //21
     ["Sorry. Could you please explain in detail?"], // 16 no match  go to replace refund or talk to an executive if mention
+    //22
     ["I'm sorry if we're not able to help you with your specific query. I could offer you a refund or a replacement for your order, or I could connect you to an executive."], //17
+    //23
     ["Sorry we cannot help you with your specific query. Here are some FAQs you might want to look into."], //18 no match END
+    //24
     ["How would you rate this conversation?"], //19
-    
+    //25
     ["Let us know how we can improve!"], //average rating pretend user fills form
+    //26
     ["Thank you for letting us know!"], // average rating feedback END
+    //27
     ["Thank you for using our service, we're glad we could be of service!"], //good rating END
 
+]
+
+const premiumTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+]
+
+const premiumTrackReplies = [
+    //1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+]
+
+const badProductTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+]
+
+const badProductTrackReplies = [
+    //1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+]
+
+const replacementTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+]
+
+const replacementTrackReplies = [
+    //1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+]
+
+const refundTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+]
+
+const refundTrackReplies = [
+    //1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+]
+
+const talkToOtherTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+]
+
+const talkToOtherTrackReplies = [
+    ///1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+]
+
+const ratingTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+]
+
+const ratingTrackReplies = [
+    //1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+]
+
+const complaintTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+]
+
+const complaintTrackReplies = [
+    //1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
 ]
