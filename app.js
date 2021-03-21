@@ -29,9 +29,9 @@ function read(userInput) {
     if (reply === "") {// if no bot reply found
         //find outside topic reponses
         reply = compare(outsidePrompts, outsideReplies, cleanedInput);
-        if(reply=== ""{//if bot is unable to respond to outside topic
+        if(reply === ""){//if bot is unable to respond to outside topic
             reply = "I'm sorry, I didn't quite get that. Maybe try asking different topic.";
-        })
+        }
     }
     addChat(userInput, reply);
 }
@@ -43,7 +43,7 @@ function compare(arrayPrompt, arrayReplies, string) {
         for (let y = 0; y < arrayPrompt[x].length; y++) {
             if (string.includes(arrayPrompt[x][y])) {
                 let replies = arrayReplies[x];
-                reply = replies[0];
+                reply = replies[Math.floor(Math.random() * replies.length)];
                 foundReply = true;
                 //no need to go through all the prompts, break from loop once a match is found
                 break;
