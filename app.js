@@ -1,12 +1,23 @@
+var globalPrompts;//current prompt track
+var globalReplies;//current reply track
 
 //event listener for user input
 document.addEventListener("DOMContentLoaded", function getInput() {//when page is fully loaded, call function getInput
+    //initially assign global prompts and replies to default track
+    globalPrompts=prompts;
+    globalReplies=replies;
+
     var userField = document.getElementById("input");//identify text input field
     addChat('', 'Hi! Thank you for choosing our store. How are you doing today?');
     userField.addEventListener("keydown", event => {
         if (event.keyCode == 13) {//if enter keydown detected
             var userInput = userField.value; //grab user input
-            read(userInput);
+            //clean input
+            var cleanedInput=clean(userInput);
+            //compare input, save reply, then switch tracks if neccessary
+            var botReply = compare(globalPrompts,globalReplies,cleanedInput);
+            //addchat
+            addChat(userInput,botReply);
             userField.value = null;//reset the user input field
         }
     })
@@ -14,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
 
 
 //cleaning up user input and trying to match it to a prompt in our script with compare(). Then replying with a response with write()
-function read(userInput) {
+function clean(userInput) {
     var cleanedInput = userInput;
 
     //lowercase input
@@ -25,7 +36,7 @@ function read(userInput) {
     cleanedInput = cleanedInput.replace(/[^\w\s]/gi, '');
 
     // find a bot reply based on user input
-    var reply = compare(prompts, replies, cleanedInput);
+    /*var reply = compare(prompts, replies, cleanedInput);
     if (reply === "") { // if no bot reply found
         //find outside topic reponses
         reply = compare(outsidePrompts, outsideReplies, cleanedInput);
@@ -33,7 +44,8 @@ function read(userInput) {
             reply = "I'm sorry, I didn't quite get that. Maybe try asking different topic.";
         }
     }
-    addChat(userInput, reply);
+    */
+    return cleanedInput;
 }
 
 function compare(arrayPrompt, arrayReplies, string) {
@@ -44,6 +56,7 @@ function compare(arrayPrompt, arrayReplies, string) {
             if (string.includes(arrayPrompt[x][y])) {
                 let replies = arrayReplies[x];
                 reply = replies[Math.floor(Math.random() * replies.length)];
+                switchTracks(x, y);
                 foundReply = true;
                 //no need to go through all the prompts, break from loop once a match is found
                 break;
@@ -64,12 +77,12 @@ function addChat(userMessage, botMessage) {
     userDiv.id = "user";
     userDiv.className = "user response";
     userDiv.style.textAlign = "right";
-    userDiv.style.backgroundColor="#f2f2f2";
+    userDiv.style.backgroundColor = "#f2f2f2";
     userDiv.innerHTML += userMessage;
 
     messagesContainer.appendChild(userDiv);
-    
-    
+
+
     let botDiv = document.createElement("div");
     let botText = document.createElement("span");
     botDiv.id = "bot";
@@ -79,12 +92,64 @@ function addChat(userMessage, botMessage) {
 
     var delaytime = 1000; //1 second
 
-setTimeout(function() {
-    botText.innerHTML = "Bot: " + botMessage;
-    botDiv.appendChild(botText);
-    messagesContainer.appendChild(botDiv);
-}, delaytime);
+    setTimeout(function () {
+        botText.innerHTML = "Bot: " + botMessage;
+        botDiv.appendChild(botText);
+        messagesContainer.appendChild(botDiv);
+    }, delaytime);
 
     //keeps most recent messages
     messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
 }
+
+function switchTracks(x, y){
+    if (x==0 && y == 4){
+        globalPrompts=goodProductTrack;
+        globalReplies=goodProductTrackReplies
+    }else if (x==0 && y ==6){
+        globalPrompts=premiumTrack;
+        globalReplies=premiumTrackReplies;
+    }
+    else if (x==0 && (y == 8|| y==9)){
+        globalPrompts=badProductTrack;
+        globalReplies=badProductTrackReplies;
+    }
+    else if(x==0 && y == 10){
+        globalPrompts=replacementTrack;
+        globalReplies=replacementTrackReplies;
+    }
+    else if(x==0&& y ==11){
+        globalPrompts=refundTrack;
+        globalReplies=refundTrackReplies;
+    }
+    else if(x==0&& (y ==12||y==13)){
+        globalPrompts=talkToOtherTrack;
+        globalReplies=talkToOtherTrackReplies
+    }
+    else if(x==0&&y==14){
+        globalPrompts=prompts;
+        globalReplies=replies;
+    }
+    else if(x==0&&y==15){
+        globalPrompts=ratingTrack;
+        globalPrompts=ratingTrackReplies
+    }
+    else if(x==0&&y==16){
+        globalPrompts=complaintTrack;
+        globalReplies=complaintTrackReplies;
+    }
+
+
+}
+/*class Track {
+    constructor(prompts, replies) {
+        this.prompts = prompts;
+        this.replies = replies;
+    }
+    get prompts(){
+        return prompts;
+    }
+    get replies(){
+        return replies;
+    }
+}*/
