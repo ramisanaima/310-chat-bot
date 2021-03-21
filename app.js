@@ -27,7 +27,11 @@ function read(userInput) {
     // find a bot reply based on user input
     var reply = compare(prompts, replies, cleanedInput);
     if (reply === "") {// if no bot reply found
-        reply = "Sorry, I didn't quite get that. Try asking a different question.";
+        //find outside topic reponses
+        reply = compare(outsidePrompts, outsideReplies, cleanedInput);
+        if(reply=== ""{//if bot is unable to respond to outside topic
+            reply = "I'm sorry, I didn't quite get that. Maybe try asking different topic.";
+        })
     }
     addChat(userInput, reply);
 }
