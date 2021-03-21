@@ -52,15 +52,15 @@ const replies = [
     //3
     ["Got it! How can we assist you with your product?"], //order number response
     //4
-    ["We are happy to receive this positive feedback! Could you tell us a bit more about what you liked? Or you can subscribe to become a premium customer?"],  //likes product, (high sentiment) ([0,4] requires happy with product track)
+    ["We are happy to receive this positive feedback! Could you tell us a bit more about what you liked? Or you can subscribe to become a premium customer?"],  //likes product, (high sentiment) ([0,4] requires good product track)
     //5
-    ["Perfect! I'm so glad you liked our product enough to recomend it to another. Could you tell us a bit more about what you liked? Or you can subscribe to become a premium customer?"],  //referred product ([0,5] requires happy with product track)
+    ["Perfect! I'm so glad you liked our product enough to recomend it to another. Could you tell us a bit more about what you liked? Or you can subscribe to become a premium customer?"],  //referred product ([0,5] requires good product track)
     //6
-    ["I would love to help you become a premium customer! Let u"],  //13 if no
+    ["I would love to help you become a premium customer! How long would you like to become a premium customer? We can also tell you our rates or benefits first."],  //Wants to become a premium customer ([0,6] requires premium track)
     //7
-    ["We're sorry to hear that this has occured, can you give more specific information about your problem?"], //6
+    ["We're sorry to hear that you would no longer like to be a premium customer, are you sure you would like to cancel and lose your benefits?"], //Cancel premium customeryour next payment will be cancelled along with your subscription. May we ask what are you are unsatisfied with?"
     //8 
-    ["I am sorry that this product has given you trouble, could you please tell us further what is broken or confusing?", "I am so sorry for your experience. Do you want a replacement, refund, or talk to an executive? Please pick one."],  //7
+    ["I am so sorry for your experience. Could you tell us which product is broken?"],  //broken product ([0,8] requires bad product track)
     //9
     ["Here's the form to request a replacement. Can I help you with anything else?"], //replace
     //10
