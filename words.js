@@ -12,9 +12,9 @@ const prompts = [
     //3
     ["my order","order number"],//order number
     //4
-    ["happy with", "satisfied with", "pleased with", "works well", "loved it"], //likes product, (high sentiment)
+    ["happy with", "satisfied with", "pleased with", "works well", "loved it"], //likes product, (high sentiment) ([0,4] requires happy with product track)
     //5
-    ["told my", "gave it to"] //referred product
+    ["told my", "gave it to", "recommended to"] //referred product ([0,5] requires happy with product track)
     //6
     ["want more", "premium", "I want to become a premium customer", "subscribe"], //Wants to become a premium customer ([0,6] requires premium track)
     //7
@@ -22,7 +22,7 @@ const prompts = [
     //8
     ["not working", "need repairs", "damaged", "does not work", "broken"],  //broken product ([0,8] requires bad product track)
     //9
-    ["hate", "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied",], //Unhappy ([0,9] requires bad product track)
+    ["hate", "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied",], //Unhappy (low sentiment) ([0,9] requires bad product track)
     //10
     ["replace", "exchange"], //replace ([0,10] requires replacement track])
     //11
@@ -43,129 +43,139 @@ const prompts = [
 
 //Ideal script followed by any default replies
 const replies = [
+    //0
+    ["I am glad to hear that! Could I please get your name?"],  //Feeling Good
     //1
-    ["I am glad to hear that! Could I please get your name?"],  //1 Feeling Good
+    ["I am very sorry to hear that, I truely hope your day gets better! Could I please get your name?"],  //Feeling bad
     //2
-    ["I am very sorry to hear that! Could I please get your name?"],  //2 Feeling bad
+    ["Nice to meet you! Could I get your order number or your issue?"],  //name response
     //3
-    ["Nice to meet you! Could you please enter the order number found on your receipt?"],  //3 name response
+    ["Got it! How can we assist you with your product?"], //order number response
     //4
-    ["How can we assist you with your product?"], //4 //order number response
+    ["We are happy to receive this positive feedback! Could you tell us a bit more about what you liked? Or you can subscribe to become a premium customer?"],  //likes product, (high sentiment) ([0,4] requires happy with product track)
     //5
-    ["We are happy to receive this positive feedback! Would you like to be our premium customer?"],  //11 premium customer
+    ["Perfect! I'm so glad you liked our product enough to recomend it to another. Could you tell us a bit more about what you liked? Or you can subscribe to become a premium customer?"],  //referred product ([0,5] requires happy with product track)
     //6
-    ["Sounds good! Here's the form to fill to be a premium customer. Can I help you with anything else?"],  //12 if yes
+    ["I would love to help you become a premium customer! Let u"],  //13 if no
     //7
-    ["That's okay. Maybe some other time. Can I help you with anything else?"],  //13 if no
-    //8
     ["We're sorry to hear that this has occured, can you give more specific information about your problem?"], //6
-    //9 
+    //8 
     ["I am sorry that this product has given you trouble, could you please tell us further what is broken or confusing?", "I am so sorry for your experience. Do you want a replacement, refund, or talk to an executive? Please pick one."],  //7
-    //10
+    //9
     ["Here's the form to request a replacement. Can I help you with anything else?"], //replace
-    //11
+    //10
     ["Here's the form to request a refund. Can I help you with anything else?"], //refund
-    //12
+    //11
     ["Here's the contact information of an executive you may contact between 10:00 AM to 4:00 PM PST. Can I help you with anything else?"],
-    //13
+    //12
     ["What can we help you with? Please specify."],  //talk to an executive
-    //14
+    //13
     ["Sure thing! Please enter another order number!"],
-    //15
+    //14
     ["We would love to hear your thoughts! Rate your experience with us today from 0 to 10!"],
-    //16
+    //15
     ["We're so sorry, would you like to file a complaint?"], //bad rating
-    //17
+    //16
     ["Here's the form to file a complaint. We apologize for the inconvenience, thank you for using our services."], //if yes file a complaint, pretend user fills form
-    //18
+    //17
     ["We apologize for the inconvenience, thank you for using our services."], //bad rating after yes or no file complaint END
-    //19
+    //18
     ["Thank you for sharing your feedback. Hope you have a better experience next time!"],  //10 Unhappy
-    //20
+    //19
     ["Thank you for the feedback. Hope we can always serve you well!"],  //14 END
-    //21
+    //20
     ["Sorry. Could you please explain in detail?"], // 16 no match  go to replace refund or talk to an executive if mention
-    //22
+    //21
     ["I'm sorry if we're not able to help you with your specific query. I could offer you a refund or a replacement for your order, or I could connect you to an executive."], //17
-    //23
+    //22
     ["Sorry we cannot help you with your specific query. Here are some FAQs you might want to look into."], //18 no match END
-    //24
+    //23
     ["How would you rate this conversation?"], //19
-    //25
+    //24
     ["Let us know how we can improve!"], //average rating pretend user fills form
-    //26
+    //25
     ["Thank you for letting us know!"], // average rating feedback END
-    //27
+    //26
     ["Thank you for using our service, we're glad we could be of service!"], //good rating END
 
 ]
 
+const goodProductTrack = [
+    //1
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
+]
+
+const goodProductTrackReplies = [
+    //1
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
+]
+
 const premiumTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const premiumTrackReplies = [
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const badProductTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const badProductTrackReplies = [
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const replacementTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const replacementTrackReplies = [
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const refundTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const refundTrackReplies = [
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const talkToOtherTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const talkToOtherTrackReplies = [
     ///1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const ratingTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const ratingTrackReplies = [
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const complaintTrack = [
     //1
-    ["another product","another order","different product","different order", "something else"], //other product, done: back to main
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const complaintTrackReplies = [
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: back to main
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
