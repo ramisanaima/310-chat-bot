@@ -28,7 +28,7 @@ function read(userInput) {
     var reply = compare(prompts, replies, cleanedInput);
     if (reply === "") { // if no bot reply found
         //find outside topic reponses
-        reply = compare(goodProductTrack, goodProductTrackReplies, cleanedInput);
+        reply = compare(outsidePrompts, outsideReplies, cleanedInput);
         if (reply === "") { // if bot is unable to respond to outside topic
             reply = "I'm sorry, I didn't quite get that. Maybe try asking different topic.";
         }
