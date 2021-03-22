@@ -1,3 +1,7 @@
+import Chatbot from 'react-chatbot-kit'
+
+
+
 
 //event listener for user input
 document.addEventListener("DOMContentLoaded", function getInput() {//when page is fully loaded, call function getInput
