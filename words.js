@@ -4,11 +4,11 @@ It uses 2D arrays to store the data that the bot will sort through in order to f
 */ 
 const prompts = [
     //0
-    ["im good", "im fine", "im great", "im decent", "im ok", "I am good", "I am fine", "I am great", "I am decent", "I am ok"], //Feeling Good
+    ["im good", "im fine", "im great", "im decent", "im ok", "i am good", "i am fine", "i am great", "i am decent", "i am ok"], //Feeling Good
     //1
-    ["im feeling bad", "im terrible", "im awful", "I am not ok", "I am bad", "I am terrible", "I am not great", "I am feeling awful"],  //Feeling bad
+    ["im feeling bad", "im terrible", "im awful", "i am not ok", "i am bad", "i am terrible", "i am not great", "i am feeling awful"],  //Feeling bad
     //2
-    ["my name is", "im called", "call me"],//name (Name recognition needed)
+    ["my name is", "im called", "call me"], "i am called",//name (Name recognition needed)
     //3
     ["my order","order number"],//order number
     //4
@@ -16,23 +16,23 @@ const prompts = [
     //5
     ["told my", "gave it to", "recommended to"], //referred product ([0,5] requires happy with product track)
     //6
-    ["want more", "premium", "I want to become a premium customer", "subscribe"], //Wants to become a premium customer ([0,6] requires premium track)
+    ["want more", "premium", "i want to become a premium customer", "subscribe"], //Wants to become a premium customer ([0,6] requires premium track)
     //7
-    ["I don't want to be a premium customer", "unsubscribe", "cancel subscription"], //Cancel premium customer
+    ["i don't want to be a premium customer", "unsubscribe", "cancel subscription"], //Cancel premium customer
     //8
     ["not working", "need repairs", "damaged", "does not work", "broken"],  //broken product ([0,8] requires bad product track)
     //9
-    ["hate", "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied",], //Unhappy (low sentiment) ([0,9] requires bad product track)
+    ["hate", "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied"], //Unhappy (low sentiment) ([0,9] requires bad product track)
     //10
     ["replace", "exchange"], //replace ([0,10] requires replacement track])
     //11
     ["refund", "money back","reimburse"],  //refund ([0,11] requires refund track)
     //12
-    ["call executive", "contact executive", "chat with an executive", "talk with a person",], // talk to an executive track ([0,12] requires talk to other track])
+    ["executive", "talk with a person", "chat with a person"], // talk to an executive track ([0,12] requires talk to other track])
     //13
     ["do not understand", "confused", "assistance", "assist", "not sure how"], //confused about product ([0,13] requires talk to other track])
     //14
-    ["another product","another order","different product","different order", "something else"], //other product, back to main
+    ["another product","another order","different product","different order", "something else"], //other product
     //15
     ["rate",'rating', 'feedback','report', "thanks for your help", "all done", "no more help needed", "finished talking"], //done talking ([0,15] requires rating track])
     //16
@@ -58,46 +58,25 @@ const replies = [
     //6
     ["I would love to help you become a premium customer! How long would you like to become a premium customer? We can also tell you our rates or benefits first."],  //Wants to become a premium customer ([0,6] requires premium track)
     //7
-    ["We're sorry to hear that you would no longer like to be a premium customer, are you sure you would like to cancel and lose your benefits?"], //Cancel premium customeryour next payment will be cancelled along with your subscription. May we ask what are you are unsatisfied with?"
+    ["We're sorry to hear that you would no longer like to be a premium customer, we will now cancel your benefits right now. What can I help you with now?"], //Cancel premium customer your next payment will be cancelled along with your subscription. May we ask what are you are unsatisfied with?"
     //8 
     ["I am so sorry for your experience. Could you tell us which product is broken?"],  //broken product ([0,8] requires bad product track)
     //9
-    ["Here's the form to request a replacement. Can I help you with anything else?"], //replace
+    ["I am so sorry for your experience, we want to ensure the highest of qualities of product! How can we fix our mistake?"], //Unhappy (low sentiment) ([0,9] requires bad product track)
     //10
-    ["Here's the form to request a refund. Can I help you with anything else?"], //refund
+    ["I'm so sorry to hear that your product requires a replacement, could we hear more about what is wrong?"], //replace ([0,10] requires replacement track])
     //11
-    ["Here's the contact information of an executive you may contact between 10:00 AM to 4:00 PM PST. Can I help you with anything else?"],
+    ["I'm so soryr to hear that you product needs to be refunded, could you give us more details about what went wrong?"], //refund ([0,11] requires refund track)
     //12
-    ["What can we help you with? Please specify."],  //talk to an executive
+    ["Of course! I know not even a bot as smart as myself can compete with a human. What type of represenative would you like to talk to? We have customer service represenative, or an executive."],  // talk to an executive track ([0,12] requires talk to other track])
     //13
-    ["Sure thing! Please enter another order number!"],
+    ["I'm sorry to hear that you've been having trouble with your product, I can't provide specific information but I can refer you to an human to talk to. Please let me know if you'd like to speak to a customer service represenative, an executive or a partnership coordinator."],  // ([0,13] requires talk to other track])"],
     //14
-    ["We would love to hear your thoughts! Rate your experience with us today from 0 to 10!"],
+    ["Sure! That works too! Could I get your order number or your issue?"],
     //15
-    ["We're so sorry, would you like to file a complaint?"], //bad rating
+    ["Thank you so much for using our bot, could you give us some feedback? First please give us a rating."], //done talking ([0,15] requires rating track])
     //16
-    ["Here's the form to file a complaint. We apologize for the inconvenience, thank you for using our services."], //if yes file a complaint, pretend user fills form
-    //17
-    ["We apologize for the inconvenience, thank you for using our services."], //bad rating after yes or no file complaint END
-    //18
-    ["Thank you for sharing your feedback. Hope you have a better experience next time!"],  //10 Unhappy
-    //19
-    ["Thank you for the feedback. Hope we can always serve you well!"],  //14 END
-    //20
-    ["Sorry. Could you please explain in detail?"], // 16 no match  go to replace refund or talk to an executive if mention
-    //21
-    ["I'm sorry if we're not able to help you with your specific query. I could offer you a refund or a replacement for your order, or I could connect you to an executive."], //17
-    //22
-    ["Sorry we cannot help you with your specific query. Here are some FAQs you might want to look into."], //18 no match END
-    //23
-    ["How would you rate this conversation?"], //19
-    //24
-    ["Let us know how we can improve!"], //average rating pretend user fills form
-    //25
-    ["Thank you for letting us know!"], // average rating feedback END
-    //26
-    ["Thank you for using our service, we're glad we could be of service!"] //good rating END
-
+    ["I'm so sorry to hear you are unhappy with our services! Could you please give us some feedback? "], //file a complaint ([0,16] requires complaint track])
 ]
 
 const goodProductTrack = [
@@ -168,6 +147,26 @@ const ratingTrack = [
 const ratingTrackReplies = [
     //1
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
+    //2
+    ["We apologize for the inconvenience, thank you for using our services."], //bad rating after yes or no file complaint END
+    //3
+    ["Thank you for sharing your feedback. Hope you have a better experience next time!"],  //10 Unhappy
+    //4
+    ["Thank you for the feedback. Hope we can always serve you well!"],  //14 END
+    //5
+    ["Sorry. Could you please explain in detail?"], // 16 no match  go to replace refund or talk to an executive if mention
+    //6
+    ["I'm sorry if we're not able to help you with your specific query. I could offer you a refund or a replacement for your order, or I could connect you to an executive."], //17
+    //7
+    ["Sorry we cannot help you with your specific query. Here are some FAQs you might want to look into."], //18 no match END
+    //8
+    ["How would you rate this conversation?"], //19
+    //9
+    ["Let us know how we can improve!"], //average rating pretend user fills form
+    //10
+    ["Thank you for letting us know!"], // average rating feedback END
+    //11
+    ["Thank you for using our service, we're glad we could be of service!"] //good rating END
 ]
 
 const complaintTrack = [
