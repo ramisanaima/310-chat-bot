@@ -80,22 +80,54 @@ const replies = [
 ]
 
 const goodProductTrack = [
+    //0
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
     //1
-    ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
+    ["high quality","happy with", "satisfied with", "pleased with", "works well", "loved it", "good", "great"], //what the client was happy with
+    //2
+    ["yes","want more", "premium", "i want to become a premium customer", "subscribe", "sure","sign up"], //premium customer (requires premium track)
+    //3
+    ["no","another time", "dont want", "do not want", "its okay", "no thank"] //client doesn't want
 ]
 
 const goodProductTrackReplies = [
+    //0
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
+    ["Thank you for your positive feedback, we value our customer's opinion and your response will be used to improve future products! Would you like to become a premium customer?"],//ask if client wants to become a premium customer
+    //2
+    ["I would love to help you become a premium customer! How long would you like to become a premium customer? We can also tell you our rates or benefits first."], //(switch to premium track)
+    //3
+    ["Maybe another time! How else may I assist you?"] // done: back to main
 ]
 
 const premiumTrack = [
+    //0
+    ["rates","benefits","tell me", "more info"], // client ask about rates/benefits
     //1
+    ["yes", "sure", "sign me up", "sign up"],
+    //2
+    ["monthly","month"],
+    //3
+    ["yearly","year", "annual"],
+    //4
+    ["no","another time", "dont want", "do not want", "its okay", "no thank"],
+    //5
     ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const premiumTrackReplies = [
+    //0
+    ["Our premium members enjoy 10% off on all purchases, and earn twice the number of points on every dollar spent! We also offer free delivery! Members can subscribe monthly for $9.99/month, and we also offer an annual subscription for $70.99! Would you like to subscribe?"], //information about plan 
     //1
+    ["Awesome! How long would you like to become a member for? You can sign up for a monthly subscription for $9.99/month, or enjoy almost 40% off if you choose our annual subscription plan valued at $5.99/month!"],
+    //2
+    ["You are now a premium member on our monthly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits!"],
+    //3
+    ["You are now a premium member on our yearly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits!"]
+    //4
+    ["Maybe another time! How else may I assist you?"],
+    //5
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
 ]
 
