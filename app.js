@@ -1,7 +1,3 @@
-import Chatbot from 'react-chatbot-kit'
-
-
-
 
 //event listener for user input
 document.addEventListener("DOMContentLoaded", function getInput() {//when page is fully loaded, call function getInput
@@ -87,4 +83,13 @@ setTimeout(function() {
 
     //keeps most recent messages
     messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+}
+
+function sentiment(userInput){
+    const { SentimentAnalyzer } = require('node-nlp');
+
+    const sentiment = new SentimentAnalyzer({ language: 'en' });
+        sentiment
+    .getSentiment('I like cats')
+    .then(result => console.log(result));
 }
