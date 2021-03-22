@@ -90,6 +90,6 @@ function sentiment(userInput){
 
     const sentiment = new SentimentAnalyzer({ language: 'en' });
         sentiment
-    .getSentiment('I like cats')
+    .getSentiment(userInput)
     .then(result => console.log(result));
 }
