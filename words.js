@@ -8,7 +8,7 @@ const prompts = [
     //1
     ["im feeling bad", "im terrible", "im awful", "i am not ok", "i am bad", "i am terrible", "i am not great", "i am feeling awful"],  //Feeling bad
     //2
-    ["my name is", "im called", "call me"], "i am called",//name (Name recognition needed)
+    ["my name is", "im called", "call me", "i am called"],//name (Name recognition needed)
     //3
     ["my order","order number"],//order number
     //4
@@ -60,13 +60,13 @@ const replies = [
     //7
     ["We're sorry to hear that you would no longer like to be a premium customer, we will now cancel your benefits right now. What can I help you with now?"], //Cancel premium customer your next payment will be cancelled along with your subscription. May we ask what are you are unsatisfied with?"
     //8 
-    ["I am so sorry for your experience. Could you tell us which product is broken?"],  //broken product ([0,8] requires bad product track)
+    ["I am so sorry for your experience. Please enter your order number."],  //broken product ([0,8] requires bad product track)
     //9
     ["I am so sorry for your experience, we want to ensure the highest of qualities of product! How can we fix our mistake?"], //Unhappy (low sentiment) ([0,9] requires bad product track)
     //10
     ["I'm so sorry to hear that your product requires a replacement, could we hear more about what is wrong?"], //replace ([0,10] requires replacement track])
     //11
-    ["I'm so soryr to hear that you product needs to be refunded, could you give us more details about what went wrong?"], //refund ([0,11] requires refund track)
+    ["I'm so sorry to hear that you product needs to be refunded, could you give us more details about what went wrong?"], //refund ([0,11] requires refund track)
     //12
     ["Of course! I know not even a bot as smart as myself can compete with a human. What type of represenative would you like to talk to? We have customer service represenative, or an executive."],  // talk to an executive track ([0,12] requires talk to other track])
     //13
@@ -124,7 +124,7 @@ const premiumTrackReplies = [
     //2
     ["You are now a premium member on our monthly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits!"],
     //3
-    ["You are now a premium member on our yearly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits!"]
+    ["You are now a premium member on our yearly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits!"],
     //4
     ["Maybe another time! How else may I assist you?"],
     //5
@@ -132,31 +132,83 @@ const premiumTrackReplies = [
 ]
 
 const badProductTrack = [
+    //0
+    ["my order","order number"],//order number
     //1
-    ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
+    ["refund", "money back","reimburse"],  //refund ([0,11] requires refund track)
+    //2
+    ["replace", "exchange"], //replace ([0,10] requires replacement track])
+    //3
+    ["no","another time", "dont want", "do not want", "its okay", "no thank"],
+    //4
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
+    //5
 ]
 
 const badProductTrackReplies = [
+    //0
+    ["Thank you for letting us know, we will look into this issue. Could we offer you a refund or a replacement for this product?"], //order number recieved
     //1
+    ["Certainly. Would you like your reimbursement in the form of store points, or directly deposited back to your account's preferred payment method?"], // switch to refund track
+    //2
+    ["Certainly. Your new product wil be shipped to you in 5-10 business days. How else can I assist you?"],//done, back to main
+    //3
+    ["I'm sorry that we could not help you with this problem. How else can I assist you?"],//done, back to main
+    //4
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
+
 ]
 
 const replacementTrack = [
+    //0
+    ["not working", "need repairs", "damaged", "does not work", "broken", "hate", 
+    "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied", "bad quality", "not functional"],//client explaining what's wrong with the product
+    //1
+    ["yes", "sure", "please", "of course"],//customer wants replacement
+    //2
+    ["no","another time", "dont want", "do not want", "its okay", "no thank"],//customer dont want replacement
     //1
     ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
+
 ]
 
 const replacementTrackReplies = [
+    //0
+    ["Thank you for letting us know, we will look into this matter. Can I confirm with you one more time that you'd like a replacement?"],// replacement confirmation
+    //1
+    ["Certainly. The replacement product will arrive within 5-10 business days. How else can I assist you today?"],//replacement sent
+    //2
+    ["I'm sorry that we could not help you with this problem. How else can I assist you?"], //done, back to main
     //1
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const refundTrack = [
+    //0
+    ["not working", "need repairs", "damaged", "does not work", "broken", "hate", 
+    "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied", "bad quality", "not functional"],//client explaining what's wrong with the product
     //1
+    ["yes", "sure", "please", "of course"],//customer wants replacement
+    //2
+    ["no","another time", "dont want", "do not want", "its okay", "no thank"],//customer dont want replacement
+    //3
+    ["store points", "points", "store credit", "point"], //store point option
+    //4
+    ["direct deposit", "bank", "credit card", "debit card", "payment method", "original"],
     ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const refundTrackReplies = [
+    //0
+    ["Thank you for letting us know, we will look into this matter. Can I confirm with you one more time that you'd like a refund?"],// replacement confirmation
+    //1
+    ["Certainly. Would you like your reimbursement in the form of store points, or directly deposited back to your account's preferred payment method?"],//checking refund method
+    //2
+    ["I'm sorry that we could not help you with this problem. How else can I assist you?"], //done, back to main
+    //3
+    ["Certainly, you have been refunded for your product in the form of store points. Your balance will be updated within 24 hours. How else can I assist you?"], //back to main
+    //4
+    ["Certainly, you have been refunded for your product through your preferred method of payment. Your balance will be updated within 24 hours. How else can I assist you?"], //back to main
     //1
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
 ]
