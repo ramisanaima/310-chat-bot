@@ -36,7 +36,7 @@ const prompts = [
     //15
     ["rate",'rating', 'feedback','report', "thanks for your help", "all done", "no more help needed", "finished talking"], //done talking ([0,15] requires rating track])
     //16
-    ["yes", "file complaint", "complaint"] //file a complaint ([0,16] requires complaint track])
+    ["yes", "file complaint", "complaint"], //file a complaint ([0,16] requires complaint track])
 ]
 
 
@@ -80,13 +80,25 @@ const replies = [
 ]
 
 const goodProductTrack = [
+    //0
+    ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
     //1
-    ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
+    ["high quality","happy with", "satisfied with", "pleased with", "works well", "loved it", "good", "great"], //what the client was happy with
+    //2
+    ["yes","want more", "premium", "i want to become a premium customer", "subscribe", "sure","sign up"], //premium customer (requires premium track)
+    //3
+    ["no","another time", "dont want", "do not want", "its okay", "no thank"] //client doesn't want
 ]
 
 const goodProductTrackReplies = [
+    //0
+    ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
     //1
-    ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
+    ["uwuThank you for your positive feedback, we value our customer's opinion and your response will be used to improve future products! Would you like to become a premium customer?"],//ask if client wants to become a premium customer
+    //2
+    ["uwuI would love to help you become a premium customer! How long would you like to become a premium customer? We can also tell you our rates or benefits first."], //(switch to premium track)
+    //3
+    ["Maybe another time! How else may I assist you?"] // done: back to main
 ]
 
 const premiumTrack = [
