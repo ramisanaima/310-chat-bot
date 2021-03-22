@@ -16,6 +16,14 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
             var cleanedInput=clean(userInput);
             //compare input, save reply, then switch tracks if neccessary
             var botReply = compare(globalPrompts,globalReplies,cleanedInput);
+
+            if (botReply === "") { // if no bot reply found
+                //find outside topic reponses
+                botReply = compare(outsidePrompts, outsideReplies, cleanedInput);
+                if (botReply === "") { // if bot is unable to respond to outside topic
+                    botReply = "I'm sorry, I didn't quite get that. Maybe try asking different topic.";
+                }
+            }
             //addchat
             addChat(userInput,botReply);
             userField.value = null;//reset the user input field
@@ -56,7 +64,7 @@ function compare(arrayPrompt, arrayReplies, string) {
             if (string.includes(arrayPrompt[x][y])) {
                 let replies = arrayReplies[x];
                 reply = replies[Math.floor(Math.random() * replies.length)];
-                switchTracks(x, y);
+                switchTracks(x);
                 foundReply = true;
                 //no need to go through all the prompts, break from loop once a match is found
                 break;
@@ -102,54 +110,42 @@ function addChat(userMessage, botMessage) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
 }
 
-function switchTracks(x, y){
-    if (x==0 && y == 4){
+function switchTracks(x){//check if current track need to be switched based on user prompt
+    if (x==4){
         globalPrompts=goodProductTrack;
         globalReplies=goodProductTrackReplies
-    }else if (x==0 && y ==6){
+    }else if (x==6){
         globalPrompts=premiumTrack;
         globalReplies=premiumTrackReplies;
     }
-    else if (x==0 && (y == 8|| y==9)){
+    else if (x == 8|| x==9){
         globalPrompts=badProductTrack;
         globalReplies=badProductTrackReplies;
     }
-    else if(x==0 && y == 10){
+    else if(x == 10){
         globalPrompts=replacementTrack;
         globalReplies=replacementTrackReplies;
     }
-    else if(x==0&& y ==11){
+    else if(x==11){
         globalPrompts=refundTrack;
         globalReplies=refundTrackReplies;
     }
-    else if(x==0&& (y ==12||y==13)){
+    else if(x==12||x==13){
         globalPrompts=talkToOtherTrack;
         globalReplies=talkToOtherTrackReplies
     }
-    else if(x==0&&y==14){
+    else if(x==14){
         globalPrompts=prompts;
         globalReplies=replies;
     }
-    else if(x==0&&y==15){
+    else if(x==15){
         globalPrompts=ratingTrack;
         globalPrompts=ratingTrackReplies
     }
-    else if(x==0&&y==16){
+    else if(x==16){
         globalPrompts=complaintTrack;
         globalReplies=complaintTrackReplies;
     }
 
 
 }
-/*class Track {
-    constructor(prompts, replies) {
-        this.prompts = prompts;
-        this.replies = replies;
-    }
-    get prompts(){
-        return prompts;
-    }
-    get replies(){
-        return replies;
-    }
-}*/
