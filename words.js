@@ -142,7 +142,6 @@ const badProductTrack = [
     ["no","another time", "dont want", "do not want", "its okay", "no thank"],
     //4
     ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
-    //5
 ]
 
 const badProductTrackReplies = [
@@ -167,7 +166,7 @@ const replacementTrack = [
     ["yes", "sure", "please", "of course"],//customer wants replacement
     //2
     ["no","another time", "dont want", "do not want", "its okay", "no thank"],//customer dont want replacement
-    //1
+    //3
     ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
 
 ]
@@ -179,7 +178,7 @@ const replacementTrackReplies = [
     ["Certainly. The replacement product will arrive within 5-10 business days. How else can I assist you today?"],//replacement sent
     //2
     ["I'm sorry that we could not help you with this problem. How else can I assist you?"], //done, back to main
-    //1
+    //3
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
 ]
 
@@ -194,7 +193,8 @@ const refundTrack = [
     //3
     ["store points", "points", "store credit", "point"], //store point option
     //4
-    ["direct deposit", "bank", "credit card", "debit card", "payment method", "original"],
+    ["direct deposit", "bank", "credit card", "debit card", "payment method", "original"],//direct deposit option
+    //5
     ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
 ]
 
@@ -209,17 +209,25 @@ const refundTrackReplies = [
     ["Certainly, you have been refunded for your product in the form of store points. Your balance will be updated within 24 hours. How else can I assist you?"], //back to main
     //4
     ["Certainly, you have been refunded for your product through your preferred method of payment. Your balance will be updated within 24 hours. How else can I assist you?"], //back to main
-    //1
+    //5
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const talkToOtherTrack = [
+    //0
+    ["customer representative", "agent", "customer", "rep"],// talk to lower agent
     //1
+    ["executive", "manager", "boss"],//talk to executive
+    //2
     ["another product","another order","different product","different order", "something else"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const talkToOtherTrackReplies = [
-    ///1
+    //0
+    ["Certainly, a customer representative will be in touch shortly through your account's preferred contact method. How else can I assist you?"],//back to main
+    //1
+    ["Certainly, an executive will be in touch shortly through your account's preferred contact method. How else can I assist you?"],//back to main
+    ///2
     ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
 ]
 
@@ -258,12 +266,26 @@ const ratingTrackReplies = [
 ]
 
 const complaintTrack = [
+    //0
+    ["not working", "need repairs", "damaged", "does not work", "broken", "hate", 
+    "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied", "bad quality", "not functional",
+    "frustrating, confusing, doesn't make sense, bad, terrible, unbelievable, horrendous, buggy"],
     //1
+    ["yes", "sure", "please", "of course"],//yes send confirmation email
+    //2
+    ["no","another time", "dont want", "do not want", "its okay", "no thank"],//customer dont want replacement
+    //3
     ["another product","another order","different product","different order", "something else"], //other product, done: BACK TO MAIN TRACK
 ]
 
 const complaintTrackReplies = [
+    //0
+    ["I'm so sorry to hear this, your response has been submitted and we are working as quickly as we can to resolve this issue. Would you like to receive a confirmation email of this formal complaint?"]//receive notifications on formal complaint?
     //1
+    ["Certainly, you will receive a confirmation email along with your complaint id within the next few minutes. How else may I assist you?"],//done, back to main'
+    //2
+    ["Once again, I'm very sorry for your experience. You are a valued customer and we are working hard to resolve this issue. How else may I assist you?"],//done, back to main
+    //3
     ["Of course! I am happy to help you with something else, how can I assist?"], //other product, done: BACK TO MAIN TRACK
 ]
 
