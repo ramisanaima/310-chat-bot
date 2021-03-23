@@ -64,7 +64,7 @@ function compare(arrayPrompt, arrayReplies, string) {
             if (string.includes(arrayPrompt[x][y])) {
                 let replies = arrayReplies[x];
                 reply = replies[Math.floor(Math.random() * replies.length)];
-                switchTracks(x);
+                switchTracks(x, globalPrompts);
                 foundReply = true;
                 //no need to go through all the prompts, break from loop once a match is found
                 break;
@@ -110,42 +110,95 @@ function addChat(userMessage, botMessage) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
 }
 
-function switchTracks(x){//check if current track need to be switched based on user prompt
-    if (x==4){
-        globalPrompts=goodProductTrack;
-        globalReplies=goodProductTrackReplies
-    }else if (x==6){
-        globalPrompts=premiumTrack;
-        globalReplies=premiumTrackReplies;
+function switchTracks(x, track){//check if current track need to be switched based on user prompt
+    if(track == prompts){
+        if (x==4){
+            globalPrompts=goodProductTrack;
+            globalReplies=goodProductTrackReplies
+        }else if (x==6){
+            globalPrompts=premiumTrack;
+            globalReplies=premiumTrackReplies;
+        }
+        else if (x == 8|| x==9){
+            globalPrompts=badProductTrack;
+            globalReplies=badProductTrackReplies;
+        }
+        else if(x == 10){
+            globalPrompts=replacementTrack;
+            globalReplies=replacementTrackReplies;
+        }
+        else if(x==11){
+            globalPrompts=refundTrack;
+            globalReplies=refundTrackReplies;
+        }
+        else if(x==12||x==13){
+            globalPrompts=talkToOtherTrack;
+            globalReplies=talkToOtherTrackReplies
+        }
+        else if(x==14){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
+        else if(x==15){
+            globalPrompts=ratingTrack;
+            globalPrompts=ratingTrackReplies
+        }
+        else if(x==16){
+            globalPrompts=complaintTrack;
+            globalReplies=complaintTrackReplies;
+        }
+    }else if (track==goodProductTrack){
+        if(x==0 || x==3){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
+        if(x==2){
+            globalPrompts=premiumTrack;
+            globalReplies=premiumTrackReplies;
+        }
     }
-    else if (x == 8|| x==9){
-        globalPrompts=badProductTrack;
-        globalReplies=badProductTrackReplies;
+    else if(track==premiumTrack){
+        if(x==2||x==3||x==4||x==5){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
     }
-    else if(x == 10){
-        globalPrompts=replacementTrack;
-        globalReplies=replacementTrackReplies;
+    else if(track==badProductTrack){
+        if(x==2||x==3||x==4){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
+        else if(x==1){
+            globalPrompts=refundTrack;
+            globalReplies=refundTrackReplies;
+        }
+    }else if (track==replacementTrack){
+        if(x==1||x==2||x==3){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
+    }else if(track==refundTrack){
+        if(x==2||x==3||x==4||x==5){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
+    }else if(track==talkToOtherTrack){
+        if(x==0||x==1||x==2){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
+    }else if(track==ratingTrack){
+        if(x==0||x==5||x==6){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
+    }else if(track==complaintTrack){
+        if(x==1||x==2||x==3){
+            globalPrompts=prompts;
+            globalReplies=replies;
+        }
     }
-    else if(x==11){
-        globalPrompts=refundTrack;
-        globalReplies=refundTrackReplies;
-    }
-    else if(x==12||x==13){
-        globalPrompts=talkToOtherTrack;
-        globalReplies=talkToOtherTrackReplies
-    }
-    else if(x==14){
-        globalPrompts=prompts;
-        globalReplies=replies;
-    }
-    else if(x==15){
-        globalPrompts=ratingTrack;
-        globalPrompts=ratingTrackReplies
-    }
-    else if(x==16){
-        globalPrompts=complaintTrack;
-        globalReplies=complaintTrackReplies;
-    }
+    
 
 
 }

@@ -122,9 +122,9 @@ const premiumTrackReplies = [
     //1
     ["Awesome! How long would you like to become a member for? You can sign up for a monthly subscription for $9.99/month, or enjoy almost 40% off if you choose our annual subscription plan valued at $5.99/month!"],
     //2
-    ["You are now a premium member on our monthly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits!"],
+    ["You are now a premium member on our monthly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits! How else may I assist you?"],
     //3
-    ["You are now a premium member on our yearly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits!"],
+    ["You are now a premium member on our yearly subscription plan! You will be charged through your account's preffered method of payment. Enjoy our benefits! How else may I assist you?"],
     //4
     ["Maybe another time! How else may I assist you?"],
     //5
@@ -175,7 +175,7 @@ const replacementTrackReplies = [
     //0
     ["Thank you for letting us know, we will look into this matter. Can I confirm with you one more time that you'd like a replacement?"],// replacement confirmation
     //1
-    ["Certainly. The replacement product will arrive within 5-10 business days. How else can I assist you today?"],//replacement sent
+    ["Certainly. The replacement product will arrive within 5-10 business days. How else can I assist you today?"],//replacement sent, back to main
     //2
     ["I'm sorry that we could not help you with this problem. How else can I assist you?"], //done, back to main
     //3
@@ -187,7 +187,7 @@ const refundTrack = [
     ["not working", "need repairs", "damaged", "does not work", "broken", "hate", 
     "dislike","unhappy", "bad quality", "dissatisfied","unsatisfied", "bad quality", "not functional"],//client explaining what's wrong with the product
     //1
-    ["yes", "sure", "please", "of course"],//customer wants replacement
+    ["yes", "sure", "please", "of course"],//customer wants refund
     //2
     ["no","another time", "dont want", "do not want", "its okay", "no thank"],//customer dont want replacement
     //3
@@ -210,7 +210,7 @@ const refundTrackReplies = [
     //4
     ["Certainly, you have been refunded for your product through your preferred method of payment. Your balance will be updated within 24 hours. How else can I assist you?"], //back to main
     //5
-    ["Of course! I am happy to help you with something else, how can I assist?"] //other product, done: BACK TO MAIN TRACK
+    ["Of course! I am happy to help you with something else, how can I assist you?"] //other product, done: BACK TO MAIN TRACK
 ]
 
 const talkToOtherTrack = [
@@ -261,7 +261,7 @@ const ratingTrackReplies = [
     ["WOW! Does not compute, that's such a high rating thank you so much! We love to hear that you appreciate our service. Could you tell me what I did right?"], //insane rating
     //5
     ["I'm so sorry to hear this, this feedback will be taken in right away. Thank you for your help. How else can I assist you?"], //bad feedback, done: BACK TO MAIN TRACK
-    //7
+    //6
     ["Thank you for your kind words! I'm blushing! We love to hear your feedback and I will take this into our system, thank you! How else can I assist you?"], //good feedback, done: BACK TO MAIN TRACK
 ]
 
