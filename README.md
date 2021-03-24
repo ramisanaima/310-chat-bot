@@ -152,33 +152,42 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 
 ## Features:
 - Text Track Switching: The script is now effectively doubled and handles switching the users between "tracks" of dialogue in order to gain a better understanding of their needs and to created understanding of the specific information they are trying to achieve based on the current "flow" of the conversation. This will create a better illusion of understanding for the user.
-#### Example Output:
+#### Example Output:/SRC NEEDED/
+/SRC/
 
 - Second Topic (Premium User): The script now has a second topic of allowing the user to subcribe through the bot to a premium service offered by the company. This creates a wider range of topics the user can talk about to the bot. Along with this are some alternate topics the bot can cover.
-#### Example Output:
+#### Example Output:/SRC NEEDED/
+/SRC/
 
 - NLP Sentiment Analysis: This feature allows the bot to understand the sentiment of the user in any given message. It will tell the bot in certain scenarios to give once answers over another in order to increase understandability of the bot.
-#### Example Output:
+#### Example Output:/SRC NEEDED/
+/SRC/
 
 - NLP Spelling Mistake Correction: This feature will correct user spelling mistakes in order to allow the user to be less specific and consistent with their spelling. This will improve the system to allow less errors of understandings in the conversation.
-#### Example Output:
+#### Example Output:/SRC NEEDED/
+/SRC/
 
 - NLP Named Entity Recognition: This feature will allow the bot to understand names and places of entites the user is talking about. This will improve the system and conversation in order to make the bot able to recognize specific keywords and use them within conversation.
-#### Example Output:
+#### Example Output:/SRC NEEDED/
+/SRC/
 
 
-## Branching Structure:
+## Branching Structure:/SRC NEEDED/
+/SRC/
 
-## Level 0 DFD:
+## Level 0 DFD:/SRC NEEDED/
+/SRC/
 
 ### Description:
 This diagram shows the data flow between the 0 level components of our bot. Within you can see a very simplified representation of the data flow of the user chatting back and forth to the chat bot which takes its responses from words.js. The data flows from the user to the bot which flows to the words.js back to the bot which sends an output to the user.
 
-## :Level 1 DFD:
+## :Level 1 DFD:/SRC NEEDED/
+/SRC/
 
 ### Description:
 
-## Sample Output:
+## Sample Output:/SRC NEEDED/
+/SRC/
 
 ## Limitations:
 The limitations of our program are large as most of it feigns responsiveness but since the previous assignment we have reimplemented our text system and added nlp libraries that help narrow down the users intentions. Yet we still have some limitations, some general case limitations are:
@@ -190,7 +199,8 @@ The limitations of our program are large as most of it feigns responsiveness but
  - Cannot gauge complex questions.
  - Unaware of true user intent, feigns knowledge.
 
-## Limitations Output:
+## Limitations Output:/SRC NEEDED/
+/SRC/
 
 ## Features that could be extracted into an API:
 - Compare Method: With some tweaking, our comparing method that searches the arrays for the proper string that matches the user's input could be very valuable in an API format. With some tweaking it could be able to search arrays and find the corresponding responses quickly and easily.
