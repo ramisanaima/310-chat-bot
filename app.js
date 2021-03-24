@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
         if (event.keyCode == 13) {//if enter keydown detected
             var userInput = userField.value; //grab user input
             read(userInput);
+            export var input = userInput;
             userField.value = null;//reset the user input field
         }
     })
@@ -83,13 +84,4 @@ setTimeout(function() {
 
     //keeps most recent messages
     messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
-}
-
-function sentiment(userInput){
-    const { SentimentAnalyzer } = require('node-nlp');
-
-    const sentiment = new SentimentAnalyzer({ language: 'en' });
-        sentiment
-    .getSentiment(userInput)
-    .then(result => console.log(result));
 }

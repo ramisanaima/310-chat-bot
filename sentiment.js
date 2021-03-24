@@ -1,3 +1,5 @@
+import userInput from app.js;
+
 const { SentimentAnalyzer } = require('node-nlp');
 
 const sentiment = new SentimentAnalyzer({ language: 'en' });
