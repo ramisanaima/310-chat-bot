@@ -152,19 +152,19 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 
 ## Features:
 - Text Track Switching: The script is now effectively doubled and handles switching the users between "tracks" of dialogue in order to gain a better understanding of their needs and to created understanding of the specific information they are trying to achieve based on the current "flow" of the conversation. This will create a better illusion of understanding for the user.
-### Example Output:
+#### Example Output:
 
 - Second Topic (Premium User): The script now has a second topic of allowing the user to subcribe through the bot to a premium service offered by the company. This creates a wider range of topics the user can talk about to the bot. Along with this are some alternate topics the bot can cover.
-### Example Output:
+#### Example Output:
 
 - NLP Sentiment Analysis: This feature allows the bot to understand the sentiment of the user in any given message. It will tell the bot in certain scenarios to give once answers over another in order to increase understandability of the bot.
-### Example Output:
+#### Example Output:
 
 - NLP Spelling Mistake Correction: This feature will correct user spelling mistakes in order to allow the user to be less specific and consistent with their spelling. This will improve the system to allow less errors of understandings in the conversation.
-### Example Output:
+#### Example Output:
 
 - NLP Named Entity Recognition: This feature will allow the bot to understand names and places of entites the user is talking about. This will improve the system and conversation in order to make the bot able to recognize specific keywords and use them within conversation.
-### Example Output:
+#### Example Output:
 
 
 ## Branching Structure:
