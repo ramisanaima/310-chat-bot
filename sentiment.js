@@ -1,4 +1,4 @@
-import userInput from app.js;
+import input from app.js;
 
 const { SentimentAnalyzer } = require('node-nlp');
 
