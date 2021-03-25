@@ -1,12 +1,10 @@
-export var userInput;
-
 //event listener for user input
 document.addEventListener("DOMContentLoaded", function getInput() {//when page is fully loaded, call function getInput
     var userField = document.getElementById("input");//identify text input field
     addChat('', 'Hi! Thank you for choosing our store. How are you doing today?');
     userField.addEventListener("keydown", event => {
         if (event.keyCode == 13) {//if enter keydown detected
-            userInput = userField.value; //grab user input
+            var userInput = userField.value; //grab user input
             read(userInput);
             userField.value = null;//reset the user input field
         }
