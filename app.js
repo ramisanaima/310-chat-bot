@@ -90,7 +90,7 @@ setTimeout(function() {
 
 // sentiment nlp
 
-const { SentimentAnalyzer } = require('node-nlp');
+import { SentimentAnalyzer } from 'node-nlp';
 
 const sentiment = new SentimentAnalyzer({ language: 'en' });
 sentiment
@@ -99,20 +99,20 @@ sentiment
 
 
 
-// synonym nlp
+// // synonym nlp
 
-var synonyms = require("synonyms");
+// var synonyms = require("synonyms");
 
-synonyms("screen");
-// returns an object like this:
-{
-	n:['screen','cover','covert','concealment'],
-	v:['screen','sieve','sort','test']
-}
+// synonyms("screen");
+// // returns an object like this:
+// {
+// 	n:['screen','cover','covert','concealment'],
+// 	v;['screen','sieve','sort','test']
+// }
 
-synonyms("screen","v");
-// returns an array like this:
-['screen','sieve','sort','test']
+// synonyms("screen","v");
+// // returns an array like this:
+// ['screen','sieve','sort','test']
 
-synonyms.dictionary
-// returns the whole dictionary
+// synonyms.dictionary
+// // returns the whole dictionary

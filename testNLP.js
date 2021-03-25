@@ -1,4 +1,4 @@
-const { NlpManager } = require('node-nlp');
+import { NlpManager } from 'node-nlp';
 
 const manager = new NlpManager({ languages: ['en'], forceNER: true });
 // Adds the utterances and intents for the NLP
