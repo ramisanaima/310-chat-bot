@@ -1,3 +1,4 @@
+export var userInput;
 
 //event listener for user input
 document.addEventListener("DOMContentLoaded", function getInput() {//when page is fully loaded, call function getInput
@@ -5,9 +6,8 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
     addChat('', 'Hi! Thank you for choosing our store. How are you doing today?');
     userField.addEventListener("keydown", event => {
         if (event.keyCode == 13) {//if enter keydown detected
-            var userInput = userField.value; //grab user input
+            userInput = userField.value; //grab user input
             read(userInput);
-            export var input = userInput;
             userField.value = null;//reset the user input field
         }
     })
@@ -85,3 +85,34 @@ setTimeout(function() {
     //keeps most recent messages
     messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
 }
+
+
+
+// sentiment nlp
+
+const { SentimentAnalyzer } = require('node-nlp');
+
+const sentiment = new SentimentAnalyzer({ language: 'en' });
+sentiment
+    .getSentiment(userInput)
+    .then(result => console.log(result));
+
+
+
+// synonym nlp
+
+var synonyms = require("synonyms");
+
+synonyms("screen");
+// returns an object like this:
+{
+	n:['screen','cover','covert','concealment'],
+	v:['screen','sieve','sort','test']
+}
+
+synonyms("screen","v");
+// returns an array like this:
+['screen','sieve','sort','test']
+
+synonyms.dictionary
+// returns the whole dictionary
