@@ -1,5 +1,7 @@
 import express from 'express';
 import { readFile } from 'fs';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 import path from 'path';
@@ -14,6 +16,14 @@ const PORT=8080;
 app.use(express.static(__dirname + '/index'));
 
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true})); 
+ app.use(cors())
+
+//Route that handles message logic
+app.post('/message', (req, res) =>{
+  console.log(req.body.message)
+})
 
 readFile('./public/index.html', function (err, html) {
 

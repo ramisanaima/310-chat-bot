@@ -13,8 +13,11 @@
 		</div>
 		<div id="botchat" class="botchat">
 			<div id="messages" class="messages"></div>
-			<input id="input" type="text" placeholder="Talk to Mr. Bot" autocomplete="on" autofocus="true" />
-		</div>
+			<form action="http://localhost:8080/message" method="POST">
+				<input id="input" type="text" name="message" placeholder="Talk to Mr. Bot" autocomplete="on" autofocus="true" />
+				<button type="submit">Send</button>
+				</form>
+			</div>
 	</div>
 </body>
 <div class="svg-wrapper">
