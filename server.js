@@ -1,15 +1,8 @@
-import { createServer } from 'http';
-import { readFile } from 'fs';
+import express, { static } from 'express';
+import { join } from 'path';
 
-const PORT=8080; 
+var app = express();
 
-readFile('./index.html', function (err, html) {
+app.use(static(join(__dirname, RELATIVE_CLIENT_WEBSITE_DIR_WHERE_INDEX_FILE_IS)));
 
-    if (err) throw err;    
-
-    createServer(function(request, response) {  
-        response.writeHead(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(PORT);
-});
+app.listen(PORT);
