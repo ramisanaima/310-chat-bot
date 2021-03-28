@@ -18,12 +18,9 @@ app.use(express.static(__dirname + '/index'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true})); 
- app.use(cors())
+ app.use(cors());
 
-//Route that handles message logic
-app.post('/message', (req, res) =>{
-  console.log(req.body.message)
-})
+
 
 readFile('./public/index.html', function (err, html) {
 
@@ -36,3 +33,14 @@ readFile('./public/index.html', function (err, html) {
       }).listen(PORT);
 
 });
+
+//Route that handles message logic
+app.use(bodyParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));      
+app.use(bodyParser.text());
+app.post('/message', function(req, res) {
+console.log(req.body);
+});
+app.listen(1337);

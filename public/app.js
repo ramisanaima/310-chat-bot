@@ -15,6 +15,17 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
             //clean input
             var cleanedInput=clean(userInput);
             //compare input, save reply, then switch tracks if neccessary
+            $.ajax({
+                type: 'POST',
+                url: '/message',
+                dataType: "json",
+                data: { cleanedInput}, //q:document.getElementById("text").value
+                success: function (response) {
+                
+                },
+                error: function () {
+                }
+                });
             var botReply = compare(globalPrompts,globalReplies,cleanedInput);
 
             if (botReply === "") { // if no bot reply found
