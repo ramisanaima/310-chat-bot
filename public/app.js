@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
                 data: { cleanedInput}, //Sends input to server for NLP process
                 success: function (response) {
                     cleanedInput = JSON.stringify(response); // replaces cleaned input with new unclean JSON string from server
+                    cleanedInput = cleanedInput.substring(cleanedInput.indexOf(':')+2,cleanedInput.lastIndexOf('"'));
                     console.log("Recieved JSON from server: " + cleanedInput)
                 },
                 error: function () {

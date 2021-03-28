@@ -46,7 +46,8 @@ app.post('/message', function(req, res) {
   var clientInput = JSON.stringify(req.body);//Unclean JSON Input from CLient
   console.log("Server recieved: " + clientInput);
 
-  var NLPClientInput = clientInput; //NLP it
+  var NLPClientInput = clientInput.substring(clientInput.indexOf(':')+2,clientInput.lastIndexOf('"')); //NLP it
+
   sentimentAnalysis(NLPClientInput);
 
   res.send({ cleanedInput: NLPClientInput}); //Sends back this output in JSON format (Put info in brackets)
