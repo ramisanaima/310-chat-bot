@@ -41,6 +41,6 @@ app.use(bodyParser.urlencoded({
 }));      
 app.use(bodyParser.text());
 app.post('/message', function(req, res) {
-console.log(req.body);
+console.log(JSON.stringify(req.body));
 });
 app.listen(1337);

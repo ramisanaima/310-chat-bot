@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
             $.ajax({
                 type: 'POST',
                 url: '/message',
-                dataType: "json",
+                dataType: "JSON",
                 data: { cleanedInput}, //q:document.getElementById("text").value
                 success: function (response) {
                 
