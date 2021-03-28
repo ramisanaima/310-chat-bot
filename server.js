@@ -105,3 +105,19 @@ console.log( tokens );
 //        value: 'u k', tag: 'word' },
 //      { value: '.', tag: 'punctuation' }
 //    ]
+
+
+//spellcheck
+import { SpellCheck } from '@nlpjs/similarity';
+
+const spellCheck = new SpellCheck({
+  features: {//dictionary of words and frequency
+    wording: 1,
+    worming: 4,
+    working: 3,
+  },
+});
+//compare words to find a match of the closest levenshtein difference in dictionary, if the distance is the same, pick
+//word with higher frequency
+const actual = spellCheck.check(['worling'], 1);
+console.log(actual);
