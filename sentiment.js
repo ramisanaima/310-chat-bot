@@ -1,8 +1,9 @@
-//import userInput from app.js;
+import NLPClientInput from './server.js';
 
 import { SentimentAnalyzer } from 'node-nlp';
-
-const sentiment = new SentimentAnalyzer({ language: 'en' });
+function sentimentAnalysis(string) {
+    const sentiment = new SentimentAnalyzer({ language: 'en' });
 sentiment
-    .getSentiment('i like cats') // userInput
+    .getSentiment(string)
     .then(result => console.log(result));
+}
