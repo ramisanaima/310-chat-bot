@@ -2,7 +2,6 @@ import express from 'express';
 import { readFile } from 'fs';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-var ner = require( 'wink-ner' );
 import { SentimentAnalyzer } from 'node-nlp';
 
 const app = express();
