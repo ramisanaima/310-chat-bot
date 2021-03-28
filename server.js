@@ -56,18 +56,7 @@ app.post('/message', function(req, res) {
 });
 app.listen(1337);
 
-function sentimentAnalysis(string) {
-  const sentiment = new SentimentAnalyzer({ language: 'en' });
-sentiment
-  .getSentiment(string)
-  .then(result => console.log(result));
-  console.log(JSON.stringify(result));
-
-}
-
-
-// Load wink ner.
-// var ner = require( 'wink-ner' );
+function nameEntityRecognition(){
 import ner from 'wink-ner';
 // Create your instance of wink ner & use default config.
 var myNER = ner();
@@ -85,23 +74,8 @@ import winkTokenizer from 'wink-tokenizer';
 // Instantiate it and extract tokenize() api.
 var tokenize = winkTokenizer().tokenize;
 // Tokenize the sentence.
-var tokens = tokenize( 'Manchester United is a football club based in Manchester, U. K.' );
+var tokens = tokenize( 'My name is Shreyasi' );
 // Simply Detect entities!
 tokens = myNER.recognize( tokens );
 console.log( tokens );
-// -> [
-//      { entityType: 'club', uid: 'manu', originalSeq: [ 'Manchester', 'United' ],
-//        value: 'manchester united', tag: 'word' },
-//      { value: 'is', tag: 'word' },
-//      { value: 'a', tag: 'word' },
-//      { value: 'football', tag: 'word' },
-//      { value: 'club', tag: 'word' },
-//      { value: 'based', tag: 'word' },
-//      { value: 'in', tag: 'word' },
-//      { entityType: 'city', value: 'Manchester', tag: 'word',
-//        originalSeq: [ 'Manchester' ], uid: 'manchester' },
-//      { value: ',', tag: 'punctuation' },
-//      { entityType: 'country', uid: 'uk', originalSeq: [ 'U', '.', 'K' ],
-//        value: 'u k', tag: 'word' },
-//      { value: '.', tag: 'punctuation' }
-//    ]
+}
