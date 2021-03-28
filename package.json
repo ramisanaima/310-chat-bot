@@ -9,6 +9,7 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "node-nlp": "^4.22.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "wink-ner": "^2.1.0"
   }
 }
