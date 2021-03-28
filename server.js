@@ -41,6 +41,14 @@ app.use(bodyParser.urlencoded({
 }));      
 app.use(bodyParser.text());
 app.post('/message', function(req, res) {
-console.log(JSON.stringify(req.body));
+
+  var clientInput = JSON.stringify(req.body);//Unclean JSON Input from CLient
+  console.log("Server recieved: " + clientInput);
+
+  var NLPClientInput = clientInput; //NLP it
+
+  res.send({ cleanedInput: NLPClientInput}); //Sends back this output in JSON format (Put info in brackets)
+  console.log("Server sending: " + NLPClientInput);
+
 });
 app.listen(1337);

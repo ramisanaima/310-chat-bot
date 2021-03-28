@@ -19,9 +19,11 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
                 type: 'POST',
                 url: '/message',
                 dataType: "JSON",
-                data: { cleanedInput}, //q:document.getElementById("text").value
+                async: false,
+                data: { cleanedInput}, //Sends input to server for NLP process
                 success: function (response) {
-                
+                    cleanedInput = JSON.stringify(response); // replaces cleaned input with new unclean JSON string from server
+                    console.log("Recieved JSON from server: " + cleanedInput)
                 },
                 error: function () {
                 }
