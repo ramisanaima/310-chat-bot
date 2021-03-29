@@ -88,7 +88,7 @@ function sentimentAnalysis(string) {
 app.listen(1337);
 
 
-function nameEntityRecognition(){
+
 
   // Create your instance of wink ner & use default config.
   var myNER = ner();
@@ -98,9 +98,10 @@ function nameEntityRecognition(){
   // myNER.learn( trainData2 ); //
 
   var trainingData = [
-    { text: 'manchester united', entityType: 'club', uid: 'manu' },
-    { text: 'manchester', entityType: 'city' },
-    { text: 'U K', entityType: 'country', uid: 'uk' }
+    { text: 'Shrek', entityType: 'name', uid: 'name' },
+    { text: 'my', entityType: 'noun' },
+    { text: 'is', entityType: 'verb' },
+    { text: 'name', entityType: 'noun' }
   ];
   // Learn from the training data.
   myNER.learn( trainingData );
@@ -108,8 +109,7 @@ function nameEntityRecognition(){
   // Instantiate it and extract tokenize() api.
   var tokenize = winkTokenizer().tokenize;
   // Tokenize the sentence.
-  var tokens = tokenize( 'My name is Shreyasi' );
+  var tokens = tokenize( 'My name is Shrek' );
   // Simply Detect entities!
   tokens = myNER.recognize( tokens );
-  console.log( tokens );
-}
+  console.log( tokens )
