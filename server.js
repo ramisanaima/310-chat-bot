@@ -108,16 +108,13 @@ console.log( tokens );
 
 
 //spellcheck
+import * as fs from 'fs';
 import { SpellCheck } from '@nlpjs/similarity';
+import { NGrams } from '@nlpjs/utils';
 
-const spellCheck = new SpellCheck({
-  features: {//dictionary of words and frequency
-    wording: 1,
-    worming: 4,
-    working: 3,
-  },
-});
-//compare words to find a match of the closest levenshtein difference in dictionary, if the distance is the same, pick
-//word with higher frequency
-const actual = spellCheck.check(['worling'], 1);
+const lines = fs.readFileSync('outstanding.txt', 'utf-8').split(/\r?\n/);
+const ngrams = new NGrams({ byWord: true });
+const freqs = ngrams.getNGramsFreqs(lines, 1);
+const spellCheck = new SpellCheck({ features: freqs });
+const actual = spellCheck.check(['knowldge', 'thas', 'cliente']);
 console.log(actual);
