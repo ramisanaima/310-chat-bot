@@ -107,22 +107,34 @@ console.log( tokens );
 //    ]
 
 
-//spellcheck
-import * as fs from 'fs';
-import { SpellCheck } from '@nlpjs/similarity';
-import { NGrams } from '@nlpjs/utils';
 
+
+import * as fs from 'fs';
+import { SpellCheck } from '@nlpjs/similarity';//replaces incorrect words
+import { NGrams } from '@nlpjs/utils';//get library
+import spellingDetection from 'spell-checker-js';//detect incorrect
+spellingDetection.load('en');//load english dictionary
 const lines = fs.readFileSync('outstanding.txt', 'utf-8').split(/\r?\n/);
 const ngrams = new NGrams({ byWord: true });
 const freqs = ngrams.getNGramsFreqs(lines, 1);
 const spellCheck = new SpellCheck({ features: freqs });
-var sample = "my naem is megan";
-var spellCheckArray = sample.split(" ");
+ 
+//split into separate words array
+var sampleText = "helo my naem is Megan nicee to meeet youo";
+var spellCheckArray = sampleText.split(" ");
+console.log("array to be checked: "+spellCheckArray);
 
-//split sentence up into separate words
-spellCheckArray = spellCheck.check(spellCheckArray);
-console.log("array of corrected words: "+spellCheckArray);
-
-//arraytostring
+//loop through each word in array
+//if wrong replace with corrected word
+for(var i = 0; i<spellCheckArray.length; i++){//for each word in spellCheckArray
+  if (spellingDetection.check(spellCheckArray[i]).length>0){//if check returns an array of length>0, then the word is misspelled
+    console.log("word to be corrected: "+ spellingDetection.check(spellCheckArray[i]));
+    console.log("spellcheckarray[i]: "+spellCheckArray[i]);
+    const correction = spellCheck.check([spellCheckArray[i]]);
+    console.log(correction);
+    spellCheckArray[i]= correction[0];//replace word with correction
+  }
+}
+//turn corrected array into sentence
 var spellCheckedSentence = spellCheckArray.join(" ");
-console.log(spellCheckedSentence);
+console.log("array: " +spellCheckedSentence);
