@@ -44,14 +44,14 @@ app.use(bodyParser.text());
 app.post('/message', function(req, res) {
 
   var clientInput = JSON.stringify(req.body);//Unclean JSON Input from CLient
-  console.log("Server recieved: " + clientInput);
+ 
 
   var NLPClientInput = clientInput.substring(clientInput.indexOf(':')+2,clientInput.lastIndexOf('"')); //NLP it
 
   sentimentAnalysis(NLPClientInput);
 
   res.send({ cleanedInput: NLPClientInput}); //Sends back this output in JSON format (Put info in brackets)
-  console.log("Server sending: " + NLPClientInput);
+ 
 
 });
 
@@ -64,6 +64,11 @@ sentiment
 
 }
 
+
+
+
+
+/*
 app.listen(1337);
 
 function nameEntityRecognition(){
@@ -88,4 +93,4 @@ var tokens = tokenize( 'My name is Shreyasi' );
 // Simply Detect entities!
 tokens = myNER.recognize( tokens );
 console.log( tokens );
-}
+}*/
