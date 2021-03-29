@@ -54,6 +54,16 @@ app.post('/message', function(req, res) {
   console.log("Server sending: " + NLPClientInput);
 
 });
+
+function sentimentAnalysis(string) {
+  const sentiment = new SentimentAnalyzer({ language: 'en' });
+sentiment
+  .getSentiment(string)
+  .then(result => console.log(result));
+  console.log(JSON.stringify(result));
+
+}
+
 app.listen(1337);
 
 function nameEntityRecognition(){
