@@ -44,14 +44,14 @@ app.use(bodyParser.text());
 app.post('/message', function(req, res) {
 
   var clientInput = JSON.stringify(req.body);//Unclean JSON Input from CLient
- 
+  console.log("Server recieved: " + clientInput);
 
   var NLPClientInput = clientInput.substring(clientInput.indexOf(':')+2,clientInput.lastIndexOf('"')); //NLP it
 
   sentimentAnalysis(NLPClientInput);
 
   res.send({ cleanedInput: NLPClientInput}); //Sends back this output in JSON format (Put info in brackets)
- 
+  console.log("Server sending: " + NLPClientInput);
 
 });
 
@@ -59,38 +59,32 @@ function sentimentAnalysis(string) {
   const sentiment = new SentimentAnalyzer({ language: 'en' });
 sentiment
   .getSentiment(string)
-  .then(result => console.log(result));
-  console.log(JSON.stringify(result));
+  .then(result => console.log(result))
 
 }
 
+// app.listen(1337);
 
-
-
-
-/*
-app.listen(1337);
-
-function nameEntityRecognition(){
-import ner from 'wink-ner';
-// Create your instance of wink ner & use default config.
-var myNER = ner();
-// Define training data.
-var trainingData = [
-  { text: 'manchester united', entityType: 'club', uid: 'manu' },
-  { text: 'manchester', entityType: 'city' },
-  { text: 'U K', entityType: 'country', uid: 'uk' }
-];
-// Learn from the training data.
-myNER.learn( trainingData );
-// Since recognize() requires tokens, use wink-tokenizer.
-//var winkTokenizer = require( 'wink-tokenizer' );
-import winkTokenizer from 'wink-tokenizer';
-// Instantiate it and extract tokenize() api.
-var tokenize = winkTokenizer().tokenize;
-// Tokenize the sentence.
-var tokens = tokenize( 'My name is Shreyasi' );
-// Simply Detect entities!
-tokens = myNER.recognize( tokens );
-console.log( tokens );
-}*/
+// function nameEntityRecognition(){
+// import ner from 'wink-ner';
+// // Create your instance of wink ner & use default config.
+// var myNER = ner();
+// // Define training data.
+// var trainingData = [
+//   { text: 'manchester united', entityType: 'club', uid: 'manu' },
+//   { text: 'manchester', entityType: 'city' },
+//   { text: 'U K', entityType: 'country', uid: 'uk' }
+// ];
+// // Learn from the training data.
+// myNER.learn( trainingData );
+// // Since recognize() requires tokens, use wink-tokenizer.
+// //var winkTokenizer = require( 'wink-tokenizer' );
+// import winkTokenizer from 'wink-tokenizer';
+// // Instantiate it and extract tokenize() api.
+// var tokenize = winkTokenizer().tokenize;
+// // Tokenize the sentence.
+// var tokens = tokenize( 'My name is Shreyasi' );
+// // Simply Detect entities!
+// tokens = myNER.recognize( tokens );
+// console.log( tokens );
+// }
