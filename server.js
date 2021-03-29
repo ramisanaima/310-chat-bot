@@ -58,11 +58,30 @@ app.post('/message', function(req, res) {
 
 });
 
+
+// can remove if spellcheck in other branch works fine
+
+// function spelling(){
+//   const { SpellCheck } = require('../../packages/similarity/src');
+//   // const { SpellCheck } = require('@nlpjs/similarity');
+  
+//   const spellCheck = new SpellCheck({
+//     features: {
+//       wording: 1,
+//       worming: 4,
+//       working: 3,
+//     },
+//   });
+//   const actual = spellCheck.check(['worling'], 1);
+//   console.log(actual);
+// }
+
+
 function sentimentAnalysis(string) {
   const sentiment = new SentimentAnalyzer({ language: 'en' });
-sentiment
-  .getSentiment(string)
-  .then(result => console.log(result))
+  sentiment
+    .getSentiment(string)
+    .then(result => console.log(result))
 
 }
 
@@ -71,26 +90,26 @@ app.listen(1337);
 
 function nameEntityRecognition(){
 
-// Create your instance of wink ner & use default config.
-var myNER = ner();
-// Define training data.
+  // Create your instance of wink ner & use default config.
+  var myNER = ner();
+  // Define training data.
 
-// var trainData2 = prompts; //
-// myNER.learn( trainData2 ); //
+  // var trainData2 = prompts; //
+  // myNER.learn( trainData2 ); //
 
-var trainingData = [
-  { text: 'manchester united', entityType: 'club', uid: 'manu' },
-  { text: 'manchester', entityType: 'city' },
-  { text: 'U K', entityType: 'country', uid: 'uk' }
-];
-// Learn from the training data.
-myNER.learn( trainingData );
-// Since recognize() requires tokens, use wink-tokenizer.
-// Instantiate it and extract tokenize() api.
-var tokenize = winkTokenizer().tokenize;
-// Tokenize the sentence.
-var tokens = tokenize( 'My name is Shreyasi' );
-// Simply Detect entities!
-tokens = myNER.recognize( tokens );
-console.log( tokens );
+  var trainingData = [
+    { text: 'manchester united', entityType: 'club', uid: 'manu' },
+    { text: 'manchester', entityType: 'city' },
+    { text: 'U K', entityType: 'country', uid: 'uk' }
+  ];
+  // Learn from the training data.
+  myNER.learn( trainingData );
+  // Since recognize() requires tokens, use wink-tokenizer.
+  // Instantiate it and extract tokenize() api.
+  var tokenize = winkTokenizer().tokenize;
+  // Tokenize the sentence.
+  var tokens = tokenize( 'My name is Shreyasi' );
+  // Simply Detect entities!
+  tokens = myNER.recognize( tokens );
+  console.log( tokens );
 }
