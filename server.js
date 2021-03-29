@@ -116,5 +116,13 @@ const lines = fs.readFileSync('outstanding.txt', 'utf-8').split(/\r?\n/);
 const ngrams = new NGrams({ byWord: true });
 const freqs = ngrams.getNGramsFreqs(lines, 1);
 const spellCheck = new SpellCheck({ features: freqs });
-const actual = spellCheck.check(['knowldge', 'thas', 'cliente']);
-console.log(actual);
+var sample = "my naem is megan";
+var spellCheckArray = sample.split(" ");
+
+//split sentence up into separate words
+spellCheckArray = spellCheck.check(spellCheckArray);
+console.log("array of corrected words: "+spellCheckArray);
+
+//arraytostring
+var spellCheckedSentence = spellCheckArray.join(" ");
+console.log(spellCheckedSentence);
