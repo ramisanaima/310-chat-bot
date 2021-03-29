@@ -1,7 +1,8 @@
+var globalPrompts;//current prompt track
+var globalReplies;//current reply track
 
-
-const {clean} = require('./public/app');
-const {compare} = require('./public/app');
+const {clean} = require('./app');
+const {compare} = require('./app');
 
 test( 'should output clean userInput', ()=> {
     const text = clean('Hello whats up?! ^.^');
@@ -10,7 +11,7 @@ test( 'should output clean userInput', ()=> {
 
 
 test( 'should compare input with reply', ()=> {
-    const text = compare(prompts, replies, 'im good');
+    const text = compare(globalPrompts, globalReplies, 'im good');
     expect(text).toBe('I am glad to hear that! Could I please get your name?');
 });
 
