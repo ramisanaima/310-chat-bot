@@ -124,29 +124,100 @@ function sentimentAnalysis(string) {
 
 app.listen(1337);
 
+// Load wink ner.
+// var ner = require( 'wink-ner' );
+import ner from 'wink-ner';
+// Create your instance of wink ner & use default config.
+var myNER = ner();
+// Define training data.
+var trainingData = [
+  { text: 'manchester united', entityType: 'club', uid: 'manu' },
+  { text: 'manchester', entityType: 'city' },
+  { text: 'U K', entityType: 'country', uid: 'uk' }
+];
+// Learn from the training data.
+myNER.learn( trainingData );
+// Since recognize() requires tokens, use wink-tokenizer.
+//var winkTokenizer = require( 'wink-tokenizer' );
+import winkTokenizer from 'wink-tokenizer';
+// Instantiate it and extract tokenize() api.
+var tokenize = winkTokenizer().tokenize;
+// Tokenize the sentence.
+var tokens = tokenize( 'Manchester United is a football club based in Manchester, U. K.' );
+// Simply Detect entities!
+tokens = myNER.recognize( tokens );
+console.log( tokens );
+// -> [
+//      { entityType: 'club', uid: 'manu', originalSeq: [ 'Manchester', 'United' ],
+//        value: 'manchester united', tag: 'word' },
+//      { value: 'is', tag: 'word' },
+//      { value: 'a', tag: 'word' },
+//      { value: 'football', tag: 'word' },
+//      { value: 'club', tag: 'word' },
+//      { value: 'based', tag: 'word' },
+//      { value: 'in', tag: 'word' },
+//      { entityType: 'city', value: 'Manchester', tag: 'word',
+//        originalSeq: [ 'Manchester' ], uid: 'manchester' },
+//      { value: ',', tag: 'punctuation' },
+//      { entityType: 'country', uid: 'uk', originalSeq: [ 'U', '.', 'K' ],
+//        value: 'u k', tag: 'word' },
+//      { value: '.', tag: 'punctuation' }
+//    ]
 
 
 
-  // Create your instance of wink ner & use default config.
-  var myNER = ner();
-  // Define training data.
 
-  // var trainData2 = prompts; //
-  // myNER.learn( trainData2 ); //
+import * as fs from 'fs';
+import { SpellCheck } from '@nlpjs/similarity';//replaces incorrect words
+import { NGrams } from '@nlpjs/utils';//get library
+import spellingDetection from 'spell-checker-js';//detect incorrect
+spellingDetection.load('en');//load english dictionary
+const lines = fs.readFileSync('outstanding.txt', 'utf-8').split(/\r?\n/);
+const ngrams = new NGrams({ byWord: true });
+const freqs = ngrams.getNGramsFreqs(lines, 1);
+const spellCheck = new SpellCheck({ features: freqs });
+ 
+//split into separate words array
+var sampleText = "helo my naem is Megan nicee to meeet youo";
+var spellCheckArray = sampleText.split(" ");
+console.log("array to be checked: "+spellCheckArray);
 
-  var trainingData = [
-    { text: 'Shrek', entityType: 'name', uid: 'name' },
-    { text: 'my', entityType: 'noun' },
-    { text: 'is', entityType: 'verb' },
-    { text: 'name', entityType: 'noun' }
-  ];
-  // Learn from the training data.
-  myNER.learn( trainingData );
-  // Since recognize() requires tokens, use wink-tokenizer.
-  // Instantiate it and extract tokenize() api.
-  var tokenize = winkTokenizer().tokenize;
-  // Tokenize the sentence.
-  var tokens = tokenize( 'My name is Shrek' );
-  // Simply Detect entities!
-  tokens = myNER.recognize( tokens );
-  console.log( tokens )
+//loop through each word in array
+//if wrong replace with corrected word
+for(var i = 0; i<spellCheckArray.length; i++){//for each word in spellCheckArray
+  if (spellingDetection.check(spellCheckArray[i]).length>0){//if check returns an array of length>0, then the word is misspelled
+    console.log("word to be corrected: "+ spellingDetection.check(spellCheckArray[i]));
+    console.log("spellcheckarray[i]: "+spellCheckArray[i]);
+    const correction = spellCheck.check([spellCheckArray[i]]);
+    console.log(correction);
+    spellCheckArray[i]= correction[0];//replace word with correction
+  }
+}
+//turn corrected array into sentence
+var spellCheckedSentence = spellCheckArray.join(" ");
+console.log("array: " +spellCheckedSentence);
+
+
+// Create your instance of wink ner & use default config.
+var myNER = ner();
+// Define training data.
+
+// var trainData2 = prompts; //
+// myNER.learn( trainData2 ); //
+
+var trainingData = [
+  { text: 'Shrek', entityType: 'name', uid: 'name' },
+  { text: 'my', entityType: 'noun' },
+  { text: 'is', entityType: 'verb' },
+  { text: 'name', entityType: 'noun' }
+];
+// Learn from the training data.
+myNER.learn( trainingData );
+// Since recognize() requires tokens, use wink-tokenizer.
+// Instantiate it and extract tokenize() api.
+var tokenize = winkTokenizer().tokenize;
+// Tokenize the sentence.
+var tokens = tokenize( 'My name is Shrek' );
+// Simply Detect entities!
+tokens = myNER.recognize( tokens );
+console.log( tokens )
