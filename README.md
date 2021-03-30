@@ -187,7 +187,15 @@ This diagram shows the data flow between the 0 level components of our bot. With
 ### Description:
 
 ## Sample Output:/SRC NEEDED/
-/SRC/
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output1.PNG)
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output2.PNG)
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output3.PNG)
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output4.PNG)
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output5.PNG)
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output6.PNG)
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output7.PNG)
+![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output8.PNG)
+
 
 ## Limitations:
 The limitations of our program are large as most of it feigns responsiveness but since the previous assignment we have reimplemented our text system and added nlp libraries that help narrow down the users intentions. Yet we still have some limitations, some general case limitations are:
@@ -206,7 +214,7 @@ The limitations of our program are large as most of it feigns responsiveness but
 - Compare Method: With some tweaking, our comparing method that searches the arrays for the proper string that matches the user's input could be very valuable in an API format. With some tweaking it could be able to search arrays and find the corresponding responses quickly and easily.
 - Add chat method: Used to publish chat messages onto an HTML chat window, our addchat method could be implemented into an API in order to help others similarly add messages or constant outputs to their HTML pages through javascript.
 - Words.js: A huge complitation of customer service sentences that could be utilized very effectively for a API and tweaked for other programs. It is a large undertaking and the double array method of finding statements could be beneficial to those not familar with other data structures.
-- Utilization of the nlp.js API: Although already an API, our implementaion of the nlp.js API specifies more specific use for the algorithms and may be beneficial to others when put as an external API with nlp.js dependency. One example of this is our readings of user sentiment.
+- Front/Back End Methods: These methods allow the user to create a local site using express.js and communicate with a back end server in order to hide responses from the user. This implemenation would be used into an API with dependencies to quickly and easily host a frontend and backend setup.
 - Set timeout: Our settime out function is relatively simple but has massive benefits for anyone who needs to implement a chabot that has implied consiousness such as ours. It allows the chat bot to have a timeout before replying so it feels as if you are talking to a person or bot that actually ponders a reply.
 
 ##Test Cases Description:
