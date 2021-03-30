@@ -10,7 +10,7 @@ const prompts = [
     //2
     ["my name is", "im called", "call me", "i am called"],//name (Name recognition needed)
     //3
-    ["my order","order number"],//order number
+    ["my order","order number", "number"],//order number
     //4
     ["happy with", "satisfied with", "pleased with", "works well", "loved it"], //likes product, (high sentiment) ([0,4] requires happy with product track)
     //5
