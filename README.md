@@ -3,9 +3,15 @@ Our respository for the COSC 310 Assignments/Project for group 21.
 
 Members include Joshua Medina-Quiaro, Ramisa Mahboob, Fareeha Hayat, Shreyasi Chauhan, and Megan Nguyen.
 
-### Code Running:
+[Assignment 2 Documentation](#class-breakdown-assignment-2)
 
-To run the program and test the bot, please open index.html in a browser.
+[Assignment 3 Documentation](#assignment-3-readme-documentation)
+
+### How to run the program:
+To run the program, download the repository and type node server.js within the console to launch the client on localhost:8080. Visit in your preferred browser (we used Chrome).
+
+
+
 
 ### Link to the Presentation (A2):
 https://drive.google.com/file/d/1GBU4GQIVI5s4NGTmxxGdJdIVavXHbXqI/view?usp=sharing
@@ -148,7 +154,7 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 - Finished Work Breakdown Structure
 
 
-# Assignment 3 - README Documentation:
+# Assignment 3 README Documentation
 
 ### Link to the Presentation (A3):
 SRC
