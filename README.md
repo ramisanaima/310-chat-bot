@@ -153,10 +153,13 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 ### Link to the Presentation (A3):
 SRC
 
+## Branching Structure:
+![Branching Structure](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/BranchingStructure.png)
+
 ## Features:
 ### Text Track Switching: 
 The script is now effectively doubled and handles switching the users between "tracks" of dialogue in order to gain a better understanding of their needs and to created understanding of the specific information they are trying to achieve based on the current "flow" of the conversation. This will create a better illusion of understanding for the user.
-#### Example Output:/SRC NEEDED/
+#### Example Output:
 ![Track Switching](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Track.PNG)
 
 ### Second Topic (Premium User): 
@@ -178,10 +181,6 @@ This feature will correct user spelling mistakes in order to allow the user to b
 This feature will allow the bot to understand names and places of entites the user is talking about. This will improve the system and conversation in order to make the bot able to recognize specific keywords and use them within conversation.
 #### Example Output:
 ![NLPNER](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/NamedEntity.PNG)
-
-
-## Branching Structure:/SRC NEEDED/
-/SRC/
 
 ## Level 0 DFD:
 ![Level 0 DFD](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Level0_Version1.JPG)
