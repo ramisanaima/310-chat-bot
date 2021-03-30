@@ -15,20 +15,6 @@ document.addEventListener("DOMContentLoaded", function getInput() {//when page i
             //clean input
             var cleanedInput=clean(userInput);
             //compare input, save reply, then switch tracks if neccessary
-            $.ajax({
-                type: 'POST',
-                url: '/message',
-                dataType: "JSON",
-                async: false,
-                data: { cleanedInput}, //Sends input to server for NLP process
-                success: function (response) {
-                    cleanedInput = JSON.stringify(response); // replaces cleaned input with new unclean JSON string from server
-                    cleanedInput = cleanedInput.substring(cleanedInput.indexOf(':')+2,cleanedInput.lastIndexOf('"'));
-                    console.log("Recieved JSON from server: " + cleanedInput)
-                },
-                error: function () {
-                }
-                });
             var botReply = compare(globalPrompts,globalReplies,cleanedInput);
 
             if (botReply === "") { // if no bot reply found
@@ -69,7 +55,7 @@ function clean(userInput) {
     */
     return cleanedInput;
 }
-module.exports = clean;
+module.exports= clean;
 
 function compare(arrayPrompt, arrayReplies, string) {
     let reply = "";
@@ -92,6 +78,8 @@ function compare(arrayPrompt, arrayReplies, string) {
     }
     return reply;
 }
+
+module.exports= compare;
 
 function addChat(userMessage, botMessage) {
     const messagesContainer = document.getElementById("messages");
