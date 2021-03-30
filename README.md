@@ -220,5 +220,5 @@ The limitations of our program are large as most of it feigns responsiveness but
 - Front/Back End Methods: These methods allow the user to create a local site using express.js and communicate with a back end server in order to hide responses from the user. This implemenation would be used into an API with dependencies to quickly and easily host a frontend and backend setup.
 - Set timeout: Our settime out function is relatively simple but has massive benefits for anyone who needs to implement a chabot that has implied consiousness such as ours. It allows the chat bot to have a timeout before replying so it feels as if you are talking to a person or bot that actually ponders a reply.
 
-##Test Cases Documentation Document:
-![TestCaseDocumentation](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/UnitTestDocumentation.txt)
+## Test Cases Documentation Document:
+https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/UnitTestDocumentation.txt
