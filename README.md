@@ -161,7 +161,7 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 # Assignment 3 README Documentation
 
 ### Link to the Presentation (A3):
-![A3 Presentation](https://drive.google.com/file/d/1L-itEHEDi_JCdrWF3VKpFtjZxbjrETAH/view?usp=sharing)
+https://drive.google.com/file/d/1L-itEHEDi_JCdrWF3VKpFtjZxbjrETAH/view?usp=sharing
 
 ## Branching Structure:
 ![Branching Structure](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/BranchingStructure.png)
