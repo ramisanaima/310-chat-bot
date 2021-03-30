@@ -10,7 +10,7 @@ To run the program and test the bot, please open index.html in a browser.
 ### Link to the Presentation (A2):
 https://drive.google.com/file/d/1GBU4GQIVI5s4NGTmxxGdJdIVavXHbXqI/view?usp=sharing
 
-# Class Breakdown:
+# Class Breakdown Assignment 2:
 
 ## App.js: 
 This class is the main class that will handle the bots main functionality. It listens to the document for user inputs and will generate the proper actions in receiving and appending text to the chat bot, it will call words.js in order to find what messages to reply as. Functions included in app.js are:
