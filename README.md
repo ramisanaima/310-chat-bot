@@ -154,25 +154,30 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 SRC
 
 ## Features:
-- Text Track Switching: The script is now effectively doubled and handles switching the users between "tracks" of dialogue in order to gain a better understanding of their needs and to created understanding of the specific information they are trying to achieve based on the current "flow" of the conversation. This will create a better illusion of understanding for the user.
+### Text Track Switching: 
+The script is now effectively doubled and handles switching the users between "tracks" of dialogue in order to gain a better understanding of their needs and to created understanding of the specific information they are trying to achieve based on the current "flow" of the conversation. This will create a better illusion of understanding for the user.
 #### Example Output:/SRC NEEDED/
-/SRC/
+![Track Switching](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Track.PNG)
 
-- Second Topic (Premium User): The script now has a second topic of allowing the user to subcribe through the bot to a premium service offered by the company. This creates a wider range of topics the user can talk about to the bot. Along with this are some alternate topics the bot can cover.
-#### Example Output:/SRC NEEDED/
-/SRC/
+### Second Topic (Premium User): 
+The script now has a second topic of allowing the user to subcribe through the bot to a premium service offered by the company. This creates a wider range of topics the user can talk about to the bot. Along with this are some alternate topics the bot can cover.
+#### Example Output:
+![Topic 2](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Topic2.PNG)
 
-- NLP Sentiment Analysis: This feature allows the bot to understand the sentiment of the user in any given message. It will tell the bot in certain scenarios to give once answers over another in order to increase understandability of the bot.
-#### Example Output:/SRC NEEDED/
-/SRC/
+### NLP Sentiment Analysis: 
+This feature allows the bot to understand the sentiment of the user in any given message. It will tell the bot in certain scenarios to give once answers over another in order to increase understandability of the bot.
+#### Example Output:
+![Sentiment](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/SentimentAnalysis.PNG)
 
-- NLP Spelling Mistake Correction: This feature will correct user spelling mistakes in order to allow the user to be less specific and consistent with their spelling. This will improve the system to allow less errors of understandings in the conversation.
-#### Example Output:/SRC NEEDED/
-/SRC/
+### NLP Spelling Mistake Correction: 
+This feature will correct user spelling mistakes in order to allow the user to be less specific and consistent with their spelling. This will improve the system to allow less errors of understandings in the conversation.
+#### Example Output:
+![Spelling Correction](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Spelling.PNG)
 
-- NLP Named Entity Recognition: This feature will allow the bot to understand names and places of entites the user is talking about. This will improve the system and conversation in order to make the bot able to recognize specific keywords and use them within conversation.
-#### Example Output:/SRC NEEDED/
-/SRC/
+### NLP Named Entity Recognition: 
+This feature will allow the bot to understand names and places of entites the user is talking about. This will improve the system and conversation in order to make the bot able to recognize specific keywords and use them within conversation.
+#### Example Output:
+![NLPNER](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/NamedEntity.PNG)
 
 
 ## Branching Structure:/SRC NEEDED/
@@ -212,8 +217,11 @@ The limitations of our program are large as most of it feigns responsiveness but
  - Cannot gauge complex questions.
  - Unaware of true user intent, feigns knowledge.
 
-## Limitations Output:/SRC NEEDED/
-/SRC/
+## Limitations Output:
+Handles synonyms to a certain extent
+![Limitations1](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Limitations1.PNG)
+Multiple questions do not work
+![Limitations2](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Limitations2.PNG)
 
 ## Features that could be extracted into an API:
 - Compare Method: With some tweaking, our comparing method that searches the arrays for the proper string that matches the user's input could be very valuable in an API format. With some tweaking it could be able to search arrays and find the corresponding responses quickly and easily.
