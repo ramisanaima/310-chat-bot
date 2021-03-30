@@ -150,6 +150,9 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 
 # Assignment 3 - README Documentation:
 
+### Link to the Presentation (A3):
+SRC
+
 ## Features:
 - Text Track Switching: The script is now effectively doubled and handles switching the users between "tracks" of dialogue in order to gain a better understanding of their needs and to created understanding of the specific information they are trying to achieve based on the current "flow" of the conversation. This will create a better illusion of understanding for the user.
 #### Example Output:/SRC NEEDED/
@@ -175,18 +178,18 @@ M6) Friday . . . March 12, 2021 10:10 AM - 8:00 PM
 ## Branching Structure:/SRC NEEDED/
 /SRC/
 
-## Level 0 DFD:/SRC NEEDED/
-/SRC/
+## Level 0 DFD:
+![Level 0 DFD](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/Level0_Version1.JPG)
 
 ### Description:
 This diagram shows the data flow between the 0 level components of our bot. Within you can see a very simplified representation of the data flow of the user chatting back and forth to the chat bot which takes its responses from words.js. The data flows from the user to the bot which flows to the words.js back to the bot which sends an output to the user.
 
-## Level 1 DFD:/SRC NEEDED/
-/SRC/
+## Level 1 DFD:
+![Level 1 DFD](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/dfd1.JPG)
 
 ### Description:
 
-## Sample Output:/SRC NEEDED/
+## Sample Output:
 ![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output1.PNG)
 ![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output2.PNG)
 ![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output3.PNG)
@@ -217,4 +220,5 @@ The limitations of our program are large as most of it feigns responsiveness but
 - Front/Back End Methods: These methods allow the user to create a local site using express.js and communicate with a back end server in order to hide responses from the user. This implemenation would be used into an API with dependencies to quickly and easily host a frontend and backend setup.
 - Set timeout: Our settime out function is relatively simple but has massive benefits for anyone who needs to implement a chabot that has implied consiousness such as ours. It allows the chat bot to have a timeout before replying so it feels as if you are talking to a person or bot that actually ponders a reply.
 
-##Test Cases Description:
+##Test Cases Documentation Document:
+![TestCaseDocumentation](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/UnitTestDocumentation.txt)
