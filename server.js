@@ -16,6 +16,13 @@ const __dirname = dirname(__filename);
 
 const PORT=8080; 
 
+//stuff for spellcheck
+import * as fs from 'fs';
+import { SpellCheck } from '@nlpjs/similarity';//replaces incorrect words
+import { NGrams } from '@nlpjs/utils';//get library
+import spellingDetection from 'spell-checker-js';//detect incorrect
+spellingDetection.load('en');//load english dictionary
+
 app.use(express.static(__dirname + '/index'));
 
 app.use(express.static('public'));
@@ -50,6 +57,9 @@ app.post('/message', function(req, res) {
 
   var NLPClientInput = clientInput.substring(clientInput.indexOf(':')+2,clientInput.lastIndexOf('"')); //NLP it
 
+  //spell check
+  NLPClientInput=spelling(NLPClientInput);
+
   sentimentAnalysis(NLPClientInput);
   // nameEntityRecognition() //
 
@@ -75,6 +85,33 @@ app.post('/message', function(req, res) {
 //   const actual = spellCheck.check(['worling'], 1);
 //   console.log(actual);
 // }
+
+function spelling(string){
+  const lines = fs.readFileSync('dictionary.txt', 'utf-8').split(/\r?\n/);//frequency dictionary
+  const ngrams = new NGrams({ byWord: true });
+  const freqs = ngrams.getNGramsFreqs(lines, 1);
+  const spellCheck = new SpellCheck({ features: freqs });
+   
+  //split into separate words array
+  var spellCheckArray = string.split(" ");
+  console.log("array to be checked: "+spellCheckArray);
+  
+  //loop through each word in array
+  //if wrong replace with corrected word
+  for(var i = 0; i<spellCheckArray.length; i++){//for each word in spellCheckArray
+    if (spellingDetection.check(spellCheckArray[i]).length>0){//if check returns an array of length>0, then the word is misspelled
+      console.log("word to be corrected: "+ spellingDetection.check(spellCheckArray[i]));
+      console.log("spellcheckarray[i]: "+spellCheckArray[i]);
+      const correction = spellCheck.check([spellCheckArray[i]]);
+      console.log(correction);
+      spellCheckArray[i]= correction[0];//replace word with correction
+    }
+  }
+  //turn corrected array into sentence
+  var spellCheckedSentence = spellCheckArray.join(" ");
+  console.log("array: " +spellCheckedSentence);
+  return spellCheckedSentence;
+}
 
 
 function sentimentAnalysis(string) {
