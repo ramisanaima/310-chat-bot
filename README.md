@@ -7,7 +7,7 @@ Members include Joshua Medina-Quiaro, Ramisa Mahboob, Fareeha Hayat, Shreyasi Ch
 
 To run the program and test the bot, please open index.html in a browser.
 
-### Link to the Presentation:
+### Link to the Presentation (A2):
 https://drive.google.com/file/d/1GBU4GQIVI5s4NGTmxxGdJdIVavXHbXqI/view?usp=sharing
 
 # Class Breakdown:
