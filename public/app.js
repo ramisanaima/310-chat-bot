@@ -69,7 +69,6 @@ function clean(userInput) {
     */
     return cleanedInput;
 }
-module.exports = clean;
 
 function compare(arrayPrompt, arrayReplies, string) {
     let reply = "";
