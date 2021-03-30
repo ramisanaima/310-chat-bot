@@ -1,0 +1,17 @@
+Testing 
+
+app.test.js class- This class is intended for unit testing functions in the app.js file. 
+The unit tests are done using Jest. Set-up: 'npm install --save-dev jest' and
+to test: 'npm test' at terminal.
+
+clean function()-
+Checks if text paramener returns a string in lower case and removes all non-alphabetical
+characters.
+
+
+compare function()-
+Checks if the user input is correctly compared with the dataset of prompts and replies. 
+
+switchTrack function()-
+Checks if with given parameners, the tracks switch or not. 
+
