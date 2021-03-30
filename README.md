@@ -188,6 +188,8 @@ This diagram shows the data flow between the 0 level components of our bot. With
 ![Level 1 DFD](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/dfd1.JPG)
 
 ### Description:
+The level 1 DFD highlights the processes and data stores that are used for the chatbot implementation.
+Each data flow into and out of the system is highlighted with their paths. The user input is collected using GUI which flows into a process called “clean input” where the user’s input is altered by removing non-alphabetical characters. The input is then processed to check spelling mistakes using NLP implementation. The input is further passed into another process called “sentiment analyzer” that also uses NLP. Finally, the input is sent to a process where it’s compared using a database. The received response after comparison is sent back to GUI and which sends output to user.
 
 ## Sample Output:
 ![Sample Output](https://github.com/COSC310-Group21/310-chat-bot/blob/main/DocumentationIMGS/A3Output1.PNG)
