@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Customer Service Chatbot</title>
+	<link rel="stylesheet" href="style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div id="container" class="container">
+		<div id="chatimage" class="chatimage">
+			<img src="bot.svg" alt="Representative" height="400">
+		</div>
+		<div id="botchat" class="botchat">
+			<div id="messages" class="messages"></div>
+			<!--<form action="http://localhost:8080/message" method="POST"></form> -->
+				<input id="input" type="text" name="message" placeholder="Talk to Mr. Bot" autocomplete="on" autofocus="true" />
+			<!--	<button type="submit">Send</button>-->
+			<!--	</form>-->
+			</div>
+	</div>
+</body>
+<div class="svg-wrapper">
+	<svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
+	  <rect class="shape" height="60" width="320" />
+	</svg>
+	 
+  </div>
+<script type="module" src="app.js" ></script>
+<script type="text/javascript" src="words.js" ></script>
+</html>
