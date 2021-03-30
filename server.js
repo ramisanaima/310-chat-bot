@@ -1,11 +1,14 @@
 import express from 'express';
-import { readFile } from 'fs';
+import * as fs from 'fs';
+import { readFile} from 'fs';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { SentimentAnalyzer } from 'node-nlp';
 import ner from 'wink-ner';
 import winkTokenizer from 'wink-tokenizer';
-
+import { SpellCheck } from '@nlpjs/similarity';//replaces incorrect words
+import { NGrams } from '@nlpjs/utils';//get library
+import spellingDetection from 'spell-checker-js';//detect incorrect
 const app = express();
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -17,10 +20,6 @@ const __dirname = dirname(__filename);
 const PORT=8080; 
 
 //stuff for spellcheck
-import * as fs from 'fs';
-import { SpellCheck } from '@nlpjs/similarity';//replaces incorrect words
-import { NGrams } from '@nlpjs/utils';//get library
-import spellingDetection from 'spell-checker-js';//detect incorrect
 spellingDetection.load('en');//load english dictionary
 
 app.use(express.static(__dirname + '/index'));
@@ -124,9 +123,6 @@ function sentimentAnalysis(string) {
 
 app.listen(1337);
 
-// Load wink ner.
-// var ner = require( 'wink-ner' );
-import ner from 'wink-ner';
 // Create your instance of wink ner & use default config.
 var myNER = ner();
 // Define training data.
@@ -138,8 +134,6 @@ var trainingData = [
 // Learn from the training data.
 myNER.learn( trainingData );
 // Since recognize() requires tokens, use wink-tokenizer.
-//var winkTokenizer = require( 'wink-tokenizer' );
-import winkTokenizer from 'wink-tokenizer';
 // Instantiate it and extract tokenize() api.
 var tokenize = winkTokenizer().tokenize;
 // Tokenize the sentence.
@@ -164,13 +158,6 @@ console.log( tokens );
 //      { value: '.', tag: 'punctuation' }
 //    ]
 
-
-
-
-import * as fs from 'fs';
-import { SpellCheck } from '@nlpjs/similarity';//replaces incorrect words
-import { NGrams } from '@nlpjs/utils';//get library
-import spellingDetection from 'spell-checker-js';//detect incorrect
 spellingDetection.load('en');//load english dictionary
 const lines = fs.readFileSync('outstanding.txt', 'utf-8').split(/\r?\n/);
 const ngrams = new NGrams({ byWord: true });
