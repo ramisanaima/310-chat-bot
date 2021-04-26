@@ -198,6 +198,15 @@ function switchTracks(x, track){//check if current track need to be switched bas
             globalReplies=replies;
         }
     }else if(track==talkToOtherTrack){
+        if(x==0||x==1){
+            //print map of office with google static map
+            const messagesContainer = document.getElementById("messages");
+            let map = document.createElement("img");
+            map.id="map";
+            map.src= "https://maps.googleapis.com/maps/api/staticmap?center=45.3791088,-75.7797689&zoom=12&size=450x350&key=AIzaSyCMTNg0qxtTQoyDbcwbYQGh47I-zbF6ov0";
+            messagesContainer.appendChild(map);
+
+        }
         if(x==0||x==1||x==2){
             globalPrompts=prompts;
             globalReplies=replies;
