@@ -17,6 +17,10 @@ To run the program, download the repository and type node server.js within the c
 #
 #
 
+# Individual Project
+### Google Static Maps API - embeds images into conversation
+The google static maps API gives the customer an address image of an outlet to visit for their queries to be addresed. Customers can also visit the location get their product(s) fixed or replaced instead of having a conversation with the bot about it. 
+
 # Assignment 3 README Documentation
 
 ### Link to the Presentation (A3):
